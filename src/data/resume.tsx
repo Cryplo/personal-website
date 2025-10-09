@@ -8,9 +8,9 @@ export const DATA = {
   location: "Ann Arbor, MI",
   locationLink: "https://www.google.com/maps/place/annarbor",
   description:
-    "Computer Science + Enginering Physics @ UMich",
+    "Computer Science + Engineering Physics @ UMich",
   summary:
-      "I started programming in 2020, ....",
+      "I'm Dylan, a student at the University of Michigan passionate about all kinds of technology.",
     //"At the end of 2022, I quit my job as a software engineer to go fulltime into building and scaling my own SaaS businesses. In the past, [I pursued a double degree in computer science and business](/#education), [interned at big tech companies in Silicon Valley](https://www.youtube.com/watch?v=d-LJ2e5qKdE), and [competed in over 21 hackathons for fun](/#hackathons). I also had the pleasure of being a part of the first ever in-person cohort of buildspace called [buildspace sf1](https://buildspace.so/sf1).",
   avatarUrl: "/me.jpeg",
   skills: [
@@ -48,7 +48,7 @@ export const DATA = {
       },
       Resume: {
         name: "Resume",
-        url: "https://drive.google.com/file/d/1DvsGiHSq2RhwQ6mODB-UmmNbhufWtGX-/view?usp=sharing",
+        url: "https://drive.google.com/file/d/1v0bpdmCsyFS5FUK1YbqlLi0fFW5HQs3y/view?usp=sharing",
         icon: Icons.googleDriveMonotone,
         navbar: true,
       },
@@ -111,7 +111,11 @@ export const DATA = {
       start: "May 2025",
       end: "Present",
       description:
-        "Enhanced Hazel code editor through resolving UI bugs and developing new features with ReasonML; Applied type theory principles to design and implement core functionality for onboarding project",
+        `
+        Researching Vim-style keybinds and action macros in the Hazel editor to improve developer efficiency. 
+        Enhanced Hazel code editor through resolving UI bugs and developing new features with ReasonML. 
+        Applied type theory principles to design and implement core functionality for onboarding project.
+        `,
     },
     {
       company: "The Future Innovators Academy",
@@ -184,7 +188,7 @@ export const DATA = {
       dates: "Sep 2025",
       active: false,
       description:
-        "Project that won MHacks 2025 Google Gemini Track; allows users to use natural language to run shell commands; developed with three others",
+        "Project that won MHacks 2025 Google Gemini Track. Allows users to use natural language to run shell commands. Developed with three others.",
       technologies: [
         "Electron",
         "React",
@@ -206,98 +210,76 @@ export const DATA = {
           icon: <Icons.github className="size-3" />,
         },
       ],
-      image: "/clai-picture.jpg",
+      image: "/clai-logo.png",
       video:
         "",
     },
     {
-      title: "Magic UI",
-      href: "https://magicui.design",
+      title: "Scrappy Shell",
+      href: "",
       dates: "June 2023 - Present",
       active: true,
       description:
-        "Designed, developed and sold animated UI components for developers.",
+        'Built a UNIX-style shell in C++ with custom parsing and execution features, replicating essential UNIX commands and operators within a functional shell environment.',
       technologies: [
-        "Next.js",
-        "Typescript",
-        "PostgreSQL",
-        "Prisma",
-        "TailwindCSS",
-        "Stripe",
-        "Shadcn UI",
-        "Magic UI",
+        "C++",
+        "Unix",
+        "Shell Commands",
       ],
       links: [
         {
-          type: "Website",
-          href: "https://magicui.design",
-          icon: <Icons.globe className="size-3" />,
-        },
-        {
           type: "Source",
-          href: "https://github.com/magicuidesign/magicui",
+          href: "https://github.com/cryplo/scrappyshell",
           icon: <Icons.github className="size-3" />,
         },
       ],
       image: "",
-      video: "https://cdn.magicui.design/bento-grid.mp4",
+      video: "/scrappyshell.mov",
     },
     {
-      title: "llm.report",
-      href: "https://llm.report",
+      title: "F1 Racing Game",
+      href: "",
       dates: "April 2023 - September 2023",
       active: true,
       description:
-        "Developed an open-source logging and analytics platform for OpenAI: Log your ChatGPT API requests, analyze costs, and improve your prompts.",
+        "Developed a racing game in Unity with C#, featuring computer-controlled opponents and fast-paced gameplay. Utilized Unity’s reinforcement learning framework to train AI models to race optimally against other cars.",
       technologies: [
-        "Next.js",
-        "Typescript",
-        "PostgreSQL",
-        "Prisma",
-        "TailwindCSS",
-        "Shadcn UI",
-        "Magic UI",
-        "Stripe",
-        "Cloudflare Workers",
+        "Unity",
+        "C#",
+        "ML-Agents",
       ],
       links: [
         {
-          type: "Website",
-          href: "https://llm.report",
-          icon: <Icons.globe className="size-3" />,
-        },
-        {
           type: "Source",
-          href: "https://github.com/dillionverma/llm.report",
+          href: "https://github.com/cryplo/f1game",
           icon: <Icons.github className="size-3" />,
         },
       ],
       image: "",
-      video: "https://cdn.llm.report/openai-demo.mp4",
+      video: "/f1.mp4",
     },
     {
-      title: "Automatic Chat",
-      href: "https://automatic.chat",
+      title: "Productivity Website",
+      href: "",
       dates: "April 2023 - March 2024",
       active: true,
       description:
         "Developed an AI Customer Support Chatbot which automatically responds to customer support tickets using the latest GPT models.",
       technologies: [
-        "Next.js",
-        "Typescript",
-        "PostgreSQL",
-        "Prisma",
-        "TailwindCSS",
-        "Shadcn UI",
-        "Magic UI",
-        "Stripe",
-        "Cloudflare Workers",
+       "HTML",
+       "CSS",
+       "JS" 
       ],
       links: [
         {
           type: "Website",
-          href: "https://automatic.chat",
+          href: "https://cryplo.github.io/Productivity-Website/",
           icon: <Icons.globe className="size-3" />,
+        },
+        {
+          type: "Source",
+          href: "https://github.com/cryplo/Productivity-Website/",
+          icon: <Icons.github className="size-3" />,
         },
       ],
       image: "",

@@ -48,7 +48,8 @@ export function ProjectCard({
     >
       <Link
         href={href || "#"}
-        className={cn("block cursor-pointer", className)}
+        target = "_blank"
+        className={cn("block", className)}
       >
         {video && (
           <video
@@ -57,7 +58,7 @@ export function ProjectCard({
             loop
             muted
             playsInline
-            className="pointer-events-none mx-auto h-40 w-full object-cover object-top" // needed because random black line at bottom of video
+            className="mx-auto h-40 w-full object-cover object-top" // needed because random black line at bottom of video
           />
         )}
         {image && (
@@ -101,7 +102,7 @@ export function ProjectCard({
         {links && links.length > 0 && (
           <div className="flex flex-row flex-wrap items-start gap-1">
             {links?.map((link, idx) => (
-              <Link href={link?.href} key={idx} target="_blank">
+              <Link href={link?.href} key={idx} target="_blank" className="cursor-pointer [&>*]:cursor-pointer">
                 <Badge key={idx} className="flex gap-2 px-2 py-1 text-[10px]">
                   {link.icon}
                   {link.type}
