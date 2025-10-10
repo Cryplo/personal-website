@@ -111,10 +111,9 @@ export const DATA = {
       start: "May 2025",
       end: "Present",
       description:
-        `
-        Researching Vim-style keybinds and action macros in the Hazel editor to improve developer efficiency. 
-        Enhanced Hazel code editor through resolving UI bugs and developing new features with ReasonML. 
-        Applied type theory principles to design and implement core functionality for onboarding project.
+`- Researching Vim-style keybinds and action macros in the Hazel editor. 
+- Enhanced Hazel code editor by resolving UI bugs and developing new features. 
+- Applied type theory principles to implement core functionality for onboarding project.
         `,
     },
     {
@@ -193,10 +192,10 @@ export const DATA = {
         "Electron",
         "React",
         "Tailwind",
-        "Vite",
         "TypeScript",
         "Gemini",
-        "WebSockets"
+        "WebSockets",
+        "Python"
       ],
       links: [
         {
