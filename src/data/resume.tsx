@@ -185,8 +185,8 @@ export const DATA = {
     {
       title: "clAI - Command Line AI",
       href: "",
-      dates: "Sep 2025",
-      active: false,
+      dates: "September 2025",
+      active: true,
       description:
         "Project that won MHacks 2025 Google Gemini Track. Allows users to use natural language to run shell commands. Developed with three others.",
       technologies: [
@@ -217,7 +217,7 @@ export const DATA = {
     {
       title: "Scrappy Shell",
       href: "",
-      dates: "June 2023 - Present",
+      dates: "May 2025 - June 2025",
       active: true,
       description:
         'Built a UNIX-style shell in C++ with custom parsing and execution features, replicating essential UNIX commands and operators within a functional shell environment.',
@@ -239,7 +239,7 @@ export const DATA = {
     {
       title: "F1 Racing Game",
       href: "",
-      dates: "April 2023 - September 2023",
+      dates: "February 2023 - March 2023; August 2025",
       active: true,
       description:
         "Developed a racing game in Unity with C#, featuring computer-controlled opponents and fast-paced gameplay. Utilized Unity’s reinforcement learning framework to train AI models to race optimally against other cars.",
@@ -261,10 +261,10 @@ export const DATA = {
     {
       title: "Productivity Website",
       href: "",
-      dates: "April 2023 - March 2024",
+      dates: "April 2023 - March 2023",
       active: true,
       description:
-        "Developed an AI Customer Support Chatbot which automatically responds to customer support tickets using the latest GPT models.",
+        "Built a dynamic productivity website with features to allow users to manage multiple to-do lists, notes, and timers with full customization",
       technologies: [
        "HTML",
        "CSS",
@@ -284,7 +284,7 @@ export const DATA = {
       ],
       image: "",
       video:
-        "https://pub-83c5db439b40468498f97946200806f7.r2.dev/automatic-chat.mp4",
+        "/productivity.mov",
     },
   ],
   
