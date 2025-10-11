@@ -95,13 +95,11 @@
     counter-reset: line;
   }
   
-  @media (prefers-color-scheme: dark) {
-    code[data-theme*=" "],
-    code[data-theme*=" "] span {
-      color: var(--shiki-light);
-      background-color: var(--shiki-light-bg);
-    }
-  } 
+  code[data-theme*=" "],
+  code[data-theme*=" "] span {
+    color: var(--shiki-light);
+    background-color: var(--shiki-light-bg);
+  }
   
   code[data-theme*=" "],
   code[data-theme*=" "] span {
