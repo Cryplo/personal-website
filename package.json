@@ -2,6 +2,20 @@
   "name": "porfolio",
   "version": "0.1.0",
   "private": true,
+  "description": "<div align=\"center\"> <img alt=\"Portfolio\" src=\"https://github.com/dillionverma/portfolio/assets/16860528/57ffca81-3f0a-4425-b31d-094f61725455\" width=\"90%\"> </div>",
+  "keywords": [],
+  "homepage": "https://github.com/Cryplo/personal-website#readme",
+  "bugs": {
+    "url": "https://github.com/Cryplo/personal-website/issues"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Cryplo/personal-website.git"
+  },
+  "license": "ISC",
+  "author": "",
+  "type": "commonjs",
+  "main": "index.js",
   "scripts": {
     "dev": "next dev",
     "build": "next build",
