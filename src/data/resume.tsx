@@ -1,5 +1,5 @@
 import { Icons } from "@/components/icons";
-import { HomeIcon, NotebookIcon } from "lucide-react";
+import { HomeIcon, NotebookIcon, FolderIcon, FileIcon } from "lucide-react";
 
 export const DATA = {
   name: "Dylan Li",
@@ -28,6 +28,7 @@ export const DATA = {
   ],
   navbar: [
     { href: "/", icon: HomeIcon, label: "Home" },
+    { href: "/projects", icon: FolderIcon, label: "Projects"},
     { href: "/blog", icon: NotebookIcon, label: "Blog" },
   ],
   contact: {
@@ -49,7 +50,7 @@ export const DATA = {
       Resume: {
         name: "Resume",
         url: "https://drive.google.com/file/d/1v0bpdmCsyFS5FUK1YbqlLi0fFW5HQs3y/view?usp=sharing",
-        icon: Icons.googleDriveMonotone,
+        icon: FileIcon,
         navbar: true,
       },
       /*

@@ -14,9 +14,19 @@ export default async function BlogPage() {
 
   return (
     <section>
+      <div className="space-y-12 w-full">
       <BlurFade delay={BLUR_FADE_DELAY}>
-        <h1 className="font-medium text-2xl mb-8 tracking-tighter">Blog</h1>
-      </BlurFade>
+        <div className="flex flex-col items-center justify-center space-y-4 text-center">
+          <div className="space-y-2">
+            <h2 className="text-3xl font-bold tracking-tighter sm:text-5xl">
+              Dive into my thoughts
+            </h2>
+            <p className="text-muted-foreground text-base">
+              A collection of musings, lessons, and stories from my journey in tech and beyond.
+            </p>
+          </div>
+        </div>
+        </BlurFade>
       {posts
         .sort((a, b) => {
           if (
@@ -41,6 +51,7 @@ export default async function BlogPage() {
             </Link>
           </BlurFade>
         ))}
+        </div>
     </section>
   );
 }
