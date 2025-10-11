@@ -40,10 +40,10 @@ export default function Page() {
         </div>
       </section>
       <section id="about">
-        <BlurFade delay={BLUR_FADE_DELAY * 3}>
+        <BlurFade delay={BLUR_FADE_DELAY * 2}>
           <h2 className="text-xl font-bold">About</h2>
         </BlurFade>
-        <BlurFade delay={BLUR_FADE_DELAY * 4}>
+        <BlurFade delay={BLUR_FADE_DELAY * 3}>
           <Markdown className="prose max-w-full text-pretty font-sans text-sm text-muted-foreground dark:prose-invert">
             {DATA.summary}
           </Markdown>
@@ -51,13 +51,13 @@ export default function Page() {
       </section>
       <section id="education">
         <div className="flex min-h-0 flex-col gap-y-3">
-          <BlurFade delay={BLUR_FADE_DELAY * 7}>
+          <BlurFade delay={BLUR_FADE_DELAY * 4}>
             <h2 className="text-xl font-bold">Education</h2>
           </BlurFade>
           {DATA.education.map((education, id) => (
             <BlurFade
               key={education.school}
-              delay={BLUR_FADE_DELAY * 8 + id * 0.05}
+              delay={BLUR_FADE_DELAY * 5 + id * 0.05}
             >
               <ResumeCard
                 key={education.school}
@@ -68,6 +68,7 @@ export default function Page() {
                 href={education.href}
                 badges={education.badges}
                 period={`${education.start} - ${education.end ?? "Present"}`}
+                gpa={education.gpa}
                 description={education.description}
               />
             </BlurFade>
@@ -76,13 +77,13 @@ export default function Page() {
       </section>
       <section id="work">
         <div className="flex min-h-0 flex-col gap-y-3">
-          <BlurFade delay={BLUR_FADE_DELAY * 5}>
+          <BlurFade delay={BLUR_FADE_DELAY * 6}>
             <h2 className="text-xl font-bold">Experience</h2>
           </BlurFade>
           {DATA.work.map((work, id) => (
             <BlurFade
               key={work.company}
-              delay={BLUR_FADE_DELAY * 6 + id * 0.05}
+              delay={BLUR_FADE_DELAY * 7 + id * 0.05}
             >
               <ResumeCard
                 key={work.company}

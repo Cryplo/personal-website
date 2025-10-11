@@ -153,8 +153,13 @@ export const DATA = {
       logoUrl: "/michigan2.png",
       start: "August 2025",
       end: "Present",
+      gpa:"n/a",
       description:
-      "EECS 280, EECS 203, EECS 201, PHYSICS 340, ENGR 100"
+      `EECS 280: Programming and Intro Data Structures
+EECS 203: Discrete Mathematics
+EECS 201: Computer Science Pragmatics
+PHYSICS 340: Waves, Heat, and Light
+ENGR 100: Robotics Mechanisms`
     },
     {
       school: "University of Michigan",
@@ -165,8 +170,11 @@ export const DATA = {
       logoUrl: "/michigan2.png",
       start: "August 2023",
       end: "December 2024",
+      gpa:"4.0",
       description:
-      "MATH 215, MATH 214, PHYSICS 240"
+      `MATH 215: Multivariable and Vector Calculus
+MATH 214: Applied Linear Algebra
+PHYSICS 240: General Physics II`
     },
     {
       school: "Pioneer High School",
@@ -177,6 +185,7 @@ export const DATA = {
       logoUrl: "/phs.png",
       start: "August 2021",
       end: "May 2025",
+      gpa:"4.0",
       description:
       "FRC Team 1076, Varsity Tennis, Wharton Global Youth Investment Competition, Asian Youth Club"
     },
