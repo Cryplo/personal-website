@@ -255,7 +255,7 @@ export const DATA = {
         },
       ],
       image: "",
-      video: "/f1.mp4",
+      video: "/f1.mov",
     },
     {
       title: "Productivity Website",
