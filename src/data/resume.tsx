@@ -66,14 +66,14 @@ export const DATA = {
         url: "https://dub.sh/dillion-youtube",
         icon: Icons.youtube,
         navbar: true,
-      },*/
+      },
       email: {
         name: "Send Email",
         url: "#",
         icon: Icons.email,
 
         navbar: false,
-      },
+      },*/
     },
   },
 
