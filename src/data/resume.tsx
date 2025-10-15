@@ -4,13 +4,19 @@ import { HomeIcon, NotebookIcon, FolderIcon, FileIcon } from "lucide-react";
 export const DATA = {
   name: "Dylan Li",
   initials: "DL",
-  url: "https://dillion.io",
+  url: "https://lidylan.dev",
   location: "Ann Arbor, MI",
   locationLink: "https://www.google.com/maps/place/annarbor",
   description:
-    "Computer Science + Engineering Physics @ UMich",
+    `Computer Science
+Engineering Physics 
+@ University of Michigan`,
   summary:
-      "I'm Dylan, a student at the University of Michigan passionate about all kinds of technology.",
+      `I'm Dylan, a student at the University of Michigan. Go Blue!
+Currently, I'm contributing to the Hazel project in the Future of Programming Lab.
+I'm also involved with CLAWS and Innovation for Impact, two software-related clubs.
+In my spare time, I love to work on side-projects and run with friends.
+Shameless plug, I use Vim keybinds`,
     //"At the end of 2022, I quit my job as a software engineer to go fulltime into building and scaling my own SaaS businesses. In the past, [I pursued a double degree in computer science and business](/#education), [interned at big tech companies in Silicon Valley](https://www.youtube.com/watch?v=d-LJ2e5qKdE), and [competed in over 21 hackathons for fun](/#hackathons). I also had the pleasure of being a part of the first ever in-person cohort of buildspace called [buildspace sf1](https://buildspace.so/sf1).",
   avatarUrl: "/me.jpeg",
   skills: [
@@ -112,10 +118,7 @@ export const DATA = {
       start: "May 2025",
       end: "Present",
       description:
-`- Researching Vim-style keybinds and action macros in the Hazel editor. 
-- Enhanced Hazel code editor by resolving UI bugs and developing new features. 
-- Applied type theory principles to implement core functionality for onboarding project.
-        `,
+"Researching Vim-style keybinds and action macros in the Hazel editor. Enhanced Hazel code editor by resolving UI bugs and developing new features. Applied type theory principles to implement core functionality for onboarding project.",
     },
     {
       company: "The Future Innovators Academy",

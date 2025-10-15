@@ -25,7 +25,7 @@ export default function Page() {
                 text={`Hi, I'm ${DATA.name.split(" ")[0]} 👋`}
               />
               <BlurFadeText
-                className="max-w-[600px] md:text-xl"
+                className="max-w-[600px] md:text-xl whitespace-pre-wrap"
                 delay={BLUR_FADE_DELAY}
                 text={DATA.description}
               />
@@ -44,7 +44,7 @@ export default function Page() {
           <h2 className="text-xl font-bold">About</h2>
         </BlurFade>
         <BlurFade delay={BLUR_FADE_DELAY * 3}>
-          <Markdown className="prose max-w-full text-pretty font-sans text-sm text-muted-foreground dark:prose-invert">
+          <Markdown className="prose max-w-full text-pretty font-sans text-sm dark:prose-invert whitespace-pre-wrap">
             {DATA.summary}
           </Markdown>
         </BlurFade>
