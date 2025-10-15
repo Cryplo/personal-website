@@ -12,7 +12,7 @@ export const DATA = {
 @ University of Michigan`,
   summary:
       `I'm Dylan, a student at the University of Michigan. Go Blue!
-Currently, I'm contributing to the Hazel project in the Future of Programming Lab.
+Currently, I'm contributing to the Hazel editor in the Future of Programming Lab.
 I'm also involved with CLAWS and Innovation for Impact, two software-related clubs.
 In my spare time, I love to work on side-projects, run with friends, eat food, and MonkeyType.`,
     //"At the end of 2022, I quit my job as a software engineer to go fulltime into building and scaling my own SaaS businesses. In the past, [I pursued a double degree in computer science and business](/#education), [interned at big tech companies in Silicon Valley](https://www.youtube.com/watch?v=d-LJ2e5qKdE), and [competed in over 21 hackathons for fun](/#hackathons). I also had the pleasure of being a part of the first ever in-person cohort of buildspace called [buildspace sf1](https://buildspace.so/sf1).",
@@ -116,7 +116,8 @@ In my spare time, I love to work on side-projects, run with friends, eat food, a
       start: "May 2025",
       end: "Present",
       description:
-"Researching Vim-style keybinds and action macros in the Hazel editor. Enhanced Hazel code editor by resolving UI bugs and developing new features. Applied type theory principles to implement core functionality for onboarding project.",
+`Researching Vim-style keybinds and action macros in the Hazel editor.
+Enhanced Hazel code editor by resolving UI bugs and developing new features.`,
     },
     {
       company: "The Future Innovators Academy",
@@ -198,7 +199,7 @@ PHYSICS 240: General Physics II`
       dates: "September 2025",
       active: true,
       description:
-        "Project that won MHacks 2025 Google Gemini Track. Allows users to use natural language to run shell commands. Developed with three others.",
+        "Project that won MHacks 2025 Google Gemini Track. Allows users to input natural language, translating into and executing as a shell command.",
       technologies: [
         "Electron",
         "React",
