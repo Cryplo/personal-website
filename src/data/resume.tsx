@@ -8,7 +8,7 @@ export const DATA = {
   location: "Ann Arbor, MI",
   locationLink: "https://www.google.com/maps/place/annarbor",
   description:
-    `Computer Science and Engineering Physics 
+    `Computer Science and Engineering Physics
 @ University of Michigan`,
   summary:
       `I'm Dylan, a student at the University of Michigan. Go Blue!
