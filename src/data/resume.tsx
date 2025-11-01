@@ -53,7 +53,7 @@ In my spare time, I love to work on side-projects, run with friends, eat food, a
       },
       Resume: {
         name: "Resume",
-        url: "resume.pdf", //10/8 resume version
+        url: "https://www.lidylan.dev/resume.pdf", //10/8 resume version
         icon: FileIcon,
         navbar: true,
       },
