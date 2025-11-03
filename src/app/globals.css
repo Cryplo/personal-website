@@ -103,3 +103,69 @@ code[data-line-numbers-max-digits="2"] > [data-line]::before {
 code[data-line-numbers-max-digits="3"] > [data-line]::before {
   width: 3rem;
 }
+
+
+body {
+  position: relative;
+  min-height: 100vh;
+  background: radial-gradient(ellipse at bottom, #1B2735 0%, #090A0F 100%);
+  overflow-x: hidden;
+  color: #ffffff;
+  --scroll-offset: 0;
+}
+
+/* Small stars - move diagonally */
+body::before {
+  content: '';
+  position: fixed;
+  top: -50%;
+  left: -50%;
+  width: 200%;
+  height: 200%;
+  background-image: 
+    radial-gradient(2px 2px at 20px 30px, #eee, rgba(0,0,0,0)),
+    radial-gradient(2px 2px at 60px 70px, #fff, rgba(0,0,0,0)),
+    radial-gradient(1px 1px at 50px 50px, #fff, rgba(0,0,0,0)),
+    radial-gradient(1px 1px at 130px 80px, #fff, rgba(0,0,0,0)),
+    radial-gradient(2px 2px at 90px 10px, #fff, rgba(0,0,0,0));
+  background-repeat: repeat;
+  background-size: 200px 200px;
+  opacity: 0.8;
+  animation: twinkle 5s ease-in-out infinite;
+  pointer-events: none;
+  z-index: -1;
+  transform: translate(
+    calc(var(--scroll-offset) * -1.2px),
+    calc(var(--scroll-offset) * 1.5px)
+  );
+  transition: transform 0.1s ease-out;
+}
+
+/* Larger stars - move faster diagonally */
+body::after {
+  content: '';
+  position: fixed;
+  top: -50%;
+  left: -50%;
+  width: 200%;
+  height: 200%;
+  background-image: 
+    radial-gradient(3px 3px at 100px 120px, #fff, rgba(0,0,0,0)),
+    radial-gradient(2px 2px at 180px 40px, #ddd, rgba(0,0,0,0));
+  background-repeat: repeat;
+  background-size: 300px 300px;
+  opacity: 0.6;
+  animation: twinkle 7s ease-in-out infinite reverse;
+  pointer-events: none;
+  z-index: -1;
+  transform: translate(
+    calc(var(--scroll-offset) * -0.5px),
+    calc(var(--scroll-offset) * 0.3px)
+  );
+  transition: transform 0.1s ease-out;
+}
+
+@keyframes twinkle {
+  0%, 100% { opacity: 0.8; }
+  50% { opacity: 0.4; }
+}
