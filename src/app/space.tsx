@@ -6,7 +6,7 @@ export default function SpaceBodyBackground() {
   useEffect(() => {
     const handleScroll = () => {
       const scrolled = window.pageYOffset;
-      document.body.style.setProperty('--scroll-offset', scrolled);
+      document.body.style.setProperty('--scroll-offset', scrolled.toString());
     };
     
     // Use requestAnimationFrame for smoother performance
