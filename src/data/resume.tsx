@@ -33,7 +33,7 @@ In my spare time, I love to work on side-projects, run with friends, eat food, a
   navbar: [
     { href: "/", icon: HomeIcon, label: "Home" },
     { href: "/projects", icon: FolderIcon, label: "Projects"},
-    { href: "/blog", icon: NotebookIcon, label: "Blog" },
+    /*{ href: "/blog", icon: NotebookIcon, label: "Blog" }, */
   ],
   contact: {
     email: "lidylan@umich.edu",
