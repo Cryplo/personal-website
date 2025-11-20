@@ -16,9 +16,9 @@ const BLUR_FADE_DELAY = 0.04;
 
 export default function Page() {
   return (
-    <main className="flex flex-col min-h-[100dvh] space-y-10">
-      <section id="projects">
-        <div className="space-y-12 w-full">
+    <main className="flex flex-col space-y-10">
+      <section id="chat">
+        <div className="w-full">
           <BlurFade delay={BLUR_FADE_DELAY}>
             <div className="flex flex-col items-center justify-center space-y-4 text-center">
               <div className="space-y-2">
@@ -32,9 +32,7 @@ export default function Page() {
               </div>
             </div>
           </BlurFade>
-          <div className="grid grid-cols-1 gap-3 sm:grid-cols-2 max-w-[800px] mx-auto">
-            <ChatInterface />
-          </div>
+          <ChatInterface />
         </div>
       </section>
       {/*
