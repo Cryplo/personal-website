@@ -2,7 +2,7 @@ import { GoogleGenAI } from "@google/genai";
 
 const ai = new GoogleGenAI({ apiKey: process.env.API_KEY || '' });
 
-export const generateChatResponse = async (history: { role: string, text: string }[], userMessage: string) => {
+export const generateChatResponse = async (userMessage: string, history?: { role: string, text: string }[]) => {
     try {
       // Use the appropriate model for chat
       const model = 'gemini-2.5-flash';

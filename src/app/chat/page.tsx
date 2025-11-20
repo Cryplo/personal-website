@@ -10,6 +10,7 @@ import { DATA } from "@/data/resume";
 import Link from "next/link";
 import Markdown from "react-markdown";
 import SendMessage from "@/components/send-message";
+import ChatInterface from "@/components/chat-interface";
 
 const BLUR_FADE_DELAY = 0.04;
 
@@ -32,7 +33,7 @@ export default function Page() {
             </div>
           </BlurFade>
           <div className="grid grid-cols-1 gap-3 sm:grid-cols-2 max-w-[800px] mx-auto">
-              <SendMessage />
+            <ChatInterface />
           </div>
         </div>
       </section>
