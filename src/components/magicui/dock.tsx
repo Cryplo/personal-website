@@ -62,6 +62,7 @@ const Dock = React.forwardRef<HTMLDivElement, DockProps>(
 Dock.displayName = "Dock";
 
 export interface DockIconProps {
+  fluid?: boolean;
   size?: number;
   magnification?: number;
   distance?: number;
@@ -72,6 +73,7 @@ export interface DockIconProps {
 }
 
 const DockIcon = ({
+  fluid = false,
   size,
   magnification = DEFAULT_MAGNIFICATION,
   distance = DEFAULT_DISTANCE,
@@ -102,9 +104,10 @@ const DockIcon = ({
   return (
     <motion.div
       ref={ref}
-      style={{ width }}
+      style={fluid ? undefined : { width }}
       className={cn(
-        "flex aspect-square items-center justify-center rounded-full",
+        "flex items-center justify-center rounded-full",
+        fluid ? "" : "aspect-square",
         className
       )}
       {...props}
