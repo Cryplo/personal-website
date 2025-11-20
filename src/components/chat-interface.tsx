@@ -51,7 +51,7 @@ export default function ChatInterface(){
   return (
     <section className="relative mx-auto flex w-full max-w-6xl flex-col gap-6 px-4  pt-10">
       <div className="flex flex-col gap-4 rounded-[32px]">
-        <div className="min-h-[40vh] space-y-4 overflow-y-auto pr-1 sm:pr-3">
+        <div className="min-h-[45vh] max-h-[45vh] space-y-4 overflow-y-auto pr-1 sm:pr-3">
           {messages.map((msg) => (
             <div
               key={msg.id}

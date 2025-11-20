@@ -25,7 +25,7 @@ export default function Page() {
                 <h2 className="text-3xl font-bold tracking-tighter sm:text-5xl">
                  Chat with me 
                 </h2>
-                <p className="text-muted-foreground md:text-xl/relaxed lg:text-base/relaxed xl:text-xl/relaxed">
+                <p className="text-muted-foreground md:text-xl/relaxed lg:text-base/relaxed xl:text-l/relaxed">
                 This is an AI chatbot that I built based on my resume and experiences. <br />
                 It does not represent my opinions or beliefs, and is purely for fun.
                 </p>
