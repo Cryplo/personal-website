@@ -40,13 +40,13 @@ const SendMessage: React.FC<SendMessageProps> = ({ receiveMessage }) => {
 
   return (
     <div className="inset-x-0 bottom-0 z-30 mx-auto flex origin-bottom">
-      <div className="bottom-0 inset-x-0 h-16 w-full bg-background to-transparent backdrop-blur-lg [-webkit-mask-image:linear-gradient(to_top,black,transparent)] dark:bg-background"></div>
+      <div className="bottom-0 inset-x-0 h-8 w-full bg-background to-transparent backdrop-blur-lg [-webkit-mask-image:linear-gradient(to_top,black,transparent)] dark:bg-background"></div>
       <Dock className="z-50 relative mx-auto inline-flex w-fit items-center px-1 bg-background [box-shadow:0_0_0_1px_rgba(0,0,0,.03),0_2px_4px_rgba(0,0,0,.05),0_12px_24px_rgba(0,0,0,.05)] transform-gpu dark:[border:1px_solid_rgba(255,255,255,.1)] dark:[box-shadow:0_-20px_80px_-20px_#ffffff1f_inset] ">
           <DockIcon fluid className = "w-fit">
-            <input type="text" placeholder="Send a message" value = {message} className="h-12 px-4 min-w-[300px] md:min-w-[400px] bg-transparent border-none outline-none focus:ring-0" onChange={(event) => {setMessage(event.target.value)}} onKeyDown={(event) => handleKeyPress(event)}/>
+            <input type="text" placeholder="Send a message" value = {message} className="h-6 px-4 min-w-[300px] md:min-w-[400px] bg-transparent border-none outline-none focus:ring-0" onChange={(event) => {setMessage(event.target.value)}} onKeyDown={(event) => handleKeyPress(event)}/>
           </DockIcon>
           <DockIcon>
-            <button className="size-12" onClick={()=>handleSendPress()}>
+            <button className="size-8" onClick={()=>handleSendPress()}>
               <SendIcon className="size-4" />
             </button>
           </DockIcon>

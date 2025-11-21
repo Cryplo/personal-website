@@ -13,7 +13,7 @@ interface Message {
 export default function ChatInterface(){
     const nextMessageId = useRef(1);
     const [messages, setMessages] = useState<Message[]>([
-        {id: 0, userSent: false, message: "Hi! I'm Dylan's AI Persona"}
+        {id: 0, userSent: false, message: "Hi! I'm Dylan's AI Persona. Feel free to ask me any questions about Dylan!"}
     ]);
 
     const appendMessage = (entry: Omit<Message, "id">) => {
@@ -48,9 +48,9 @@ export default function ChatInterface(){
     };
 
   return (
-    <section className="relative mx-auto flex flex-1 w-full max-w-6xl flex-col gap-6 px-4 pt-10">
-      <div className="flex flex-1 flex-col-reverse gap-4 min-h-0 overflow-hidden">
-        <div className="flex flex-1 flex-col-reverse space-y-4 space-y-reverse overflow-y-auto pr-1 sm:pr-3 min-h-0">
+    <section className="relative mx-auto flex flex-1 w-full max-w-6xl flex-col px-4 pt-4">
+      <div className="flex flex-1 flex-col-reverse min-h-0 overflow-auto mb-6">
+        <div className="max-h-[212px] flex flex-1 flex-col-reverse space-y-4 space-y-reverse overflow-y-auto pr-1 sm:pr-3 min-h-0">
           {messages.toReversed().map((msg) => (
             <div
               key={msg.id}
