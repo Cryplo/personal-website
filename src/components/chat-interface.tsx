@@ -15,6 +15,7 @@ export default function ChatInterface(){
     const [messages, setMessages] = useState<Message[]>([
         {id: 0, userSent: false, message: "Hi! I'm Dylan's AI Persona. Feel free to ask me any questions about Dylan!"}
     ]);
+    const [loading, setLoading] = useState(false);
 
     const appendMessage = (entry: Omit<Message, "id">) => {
         const messageWithId: Message = {
@@ -31,7 +32,7 @@ export default function ChatInterface(){
         }
 
         appendMessage({ userSent: true, message: trimmedMessage });
-
+        setLoading(true);
         try {
             const data = await callGemini(trimmedMessage);
             appendMessage({
@@ -45,6 +46,7 @@ export default function ChatInterface(){
                 message: "I ran into a hiccup responding. Mind trying again?",
             });
         }
+        setLoading(false);
     };
 
   return (
