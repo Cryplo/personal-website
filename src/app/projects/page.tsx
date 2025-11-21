@@ -33,7 +33,7 @@ export default function Page() {
             {DATA.projects.map((project, id) => (
               <BlurFade
                 key={project.title}
-                delay={BLUR_FADE_DELAY + id * 0.05}
+                delay={BLUR_FADE_DELAY * 2 + Math.floor(id / 2) * BLUR_FADE_DELAY}
               >
                 <ProjectCard
                   key={project.title}
