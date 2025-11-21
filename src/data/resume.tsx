@@ -34,12 +34,18 @@ In my spare time, I love to work on side-projects, run with friends, eat food, a
     { href: "/", icon: HomeIcon, label: "Home" },
     { href: "/projects", icon: FolderIcon, label: "Projects"},
     { href: "/chat", icon: BotIcon, label: "Chat"},
-    /*{ href: "/blog", icon: NotebookIcon, label: "Blog" }, */
+    { href: "/blog", icon: NotebookIcon, label: "Blog" }
   ],
   contact: {
     email: "lidylan@umich.edu",
     tel: "+17349722779",
     social: {
+      Mail: {
+        name: "Mail",
+        url: "mailto:lidylan@umich.edu",
+        icon: Icons.email,
+        navbar: true,
+      },
       GitHub: {
         name: "GitHub",
         url: "https://github.com/Cryplo",
