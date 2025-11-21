@@ -1,4 +1,3 @@
-
 "use client";
 
 import { useRef, useState } from "react";
@@ -49,9 +48,9 @@ export default function ChatInterface(){
     };
 
   return (
-    <section className="relative mx-auto flex w-full max-w-6xl flex-col gap-6 px-4  pt-10">
-      <div className="flex flex-col-reverse gap-4 rounded-[32px]">
-        <div className="flex flex-col-reverse min-h-[45vh] max-h-[45vh] space-y-4 space-y-reverse overflow-y-auto pr-1 sm:pr-3">
+    <section className="relative mx-auto flex flex-1 w-full max-w-6xl flex-col gap-6 px-4 pt-10">
+      <div className="flex flex-1 flex-col-reverse gap-4 min-h-0 overflow-hidden">
+        <div className="flex flex-1 flex-col-reverse space-y-4 space-y-reverse overflow-y-auto pr-1 sm:pr-3 min-h-0">
           {messages.toReversed().map((msg) => (
             <div
               key={msg.id}
