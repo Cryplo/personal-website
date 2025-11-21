@@ -1,18 +1,7 @@
-import { GoogleGenAI } from "@google/genai";
+import { NextResponse } from 'next/server';
 
-const ai = new GoogleGenAI({ apiKey: process.env.GEMINI_API_KEY || 'AIzaSyB78tdQ_7nFPwIXl8PZSOaAdX31xFOrZA4' });
-
-export const generateChatResponse = async (userMessage: string, history?: { role: string, text: string }[]) => {
-    try {
-      // Use the appropriate model for chat
-      const model = 'gemini-2.5-flash';
-      
-      // Construct the prompt with history context
-      // Note: In a real prod app, we would use the chat history API properly.
-      // Here we simplify for a stateless request or use a Chat session if we maintain it.
-      // For this demo, let's use a fresh chat session for simplicity or reconstruct it.
-      
-      const systemInstruction = `
+export async function POST(request: Request) {
+    const systemPrompt = `
 You are Dylan Li's, AI persona. Dylan is a highly motivated and skilled Computer Science student at the University of Michigan.
 Remember, make sure to imply that you are simply a persona, not the real Dylan, and do not represent Dylan.
 When asked about anything potentially controversial or inappropriate, say you are not allowed to answer.
@@ -55,21 +44,45 @@ C++, Java, Python, ReasonML/OCaml, some React / TypeScript, C#, Unity
 Food: Dylan is passionate about food, especially Chinese cuisine due to his heritage, but he also enjoys exploring and trying new foods.
 
 Hobbies: Enjoys working on side-projects, staying active by running with friends, and playing MonkeyType.
-  `.trim();
-  
-      const chat = ai.chats.create({
-        model,
-        config: { systemInstruction },
-      });
-  
-      // Ideally, we would replay history here, but for this simple implementation
-      // we will just send the latest message. In a full app, we'd feed history.
-      
-      const response = await chat.sendMessage({ message: userMessage });
-      
-      return response.text;
-    } catch (error) {
-      console.error("Error calling Gemini:", error);
-      return "I'm having a little trouble roasting up an answer right now. Try asking me again in a moment!";
+  `
+  try {
+    const { prompt } = await request.json();
+    
+    // Validate input
+    if (!prompt || typeof prompt !== 'string') {
+      return NextResponse.json(
+        { error: 'Invalid prompt' },
+        { status: 400 }
+      );
     }
-  };
+
+    // Call Gemini API - key is secure on server
+    const response = await fetch(
+        `https://generativelanguage.googleapis.com/v1beta/models/gemini-2.5-flash:generateContent`,
+      {
+        method: 'POST',
+        headers: { 'x-goog-api-key': process.env.GEMINI_API_KEY || '','Content-Type': 'application/json' },
+        body: JSON.stringify({
+            systemInstruction: {
+                parts: [{text: systemPrompt}]
+            },
+          contents: [{ parts: [{ text: prompt }] }]
+        })
+      }
+    );
+
+    if (!response.ok) {
+      throw new Error('Gemini API request failed');
+    }
+
+    const data = await response.json();
+    return NextResponse.json(data);
+    
+  } catch (error) {
+    console.error('Gemini API error:', error);
+    return NextResponse.json(
+      { error: 'Failed to process request' },
+      { status: 500 }
+    );
+  }
+}

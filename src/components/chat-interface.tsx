@@ -1,7 +1,7 @@
 "use client";
 
 import { useRef, useState } from "react";
-import { generateChatResponse } from "@/lib/geminiService";
+import { callGemini } from "@/lib/gemini";
 import SendMessage from "./send-message";
 
 interface Message {
@@ -33,10 +33,10 @@ export default function ChatInterface(){
         appendMessage({ userSent: true, message: trimmedMessage });
 
         try {
-            const botMessage = await generateChatResponse(trimmedMessage);
+            const data = await callGemini(trimmedMessage);
             appendMessage({
                 userSent: false,
-                message: botMessage?.trim() ?? "Here’s what I’d say if I could think right now 🙂",
+                message: data.candidates?.[0]?.content?.parts?.[0]?.text.trim() ?? "Here’s what I’d say if I could think right now 🙂",
             });
         } catch (error) {
             console.error("[ChatInterface] Failed to fetch bot reply:", error);
