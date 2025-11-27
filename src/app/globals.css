@@ -119,10 +119,10 @@ body {
 body::before {
   content: '';
   position: fixed;
-  top: -100%;
-  left: -50%;
-  width: 200%;
-  height: 200%;
+  top: -300%;
+  left: -300%;
+  width: 500%;
+  height: 500%;
   background-image: 
     radial-gradient(2px 2px at 20px 30px, #eee, rgba(0,0,0,0)),
     radial-gradient(2px 2px at 60px 70px, #fff, rgba(0,0,0,0)),
@@ -166,10 +166,10 @@ body::before {
 body::after {
   content: '';
   position: fixed;
-  top: -50%;
-  left: -50%;
-  width: 200%;
-  height: 200%;
+  top: -300%;
+  left: -300%;
+  width: 500%;
+  height: 500%;
   background-image: 
     radial-gradient(3px 3px at 100px 120px, #fff, rgba(0,0,0,0)),
     radial-gradient(2px 2px at 180px 40px, #ddd, rgba(0,0,0,0)),
