@@ -200,6 +200,27 @@ PHYSICS 240: General Physics II`
     },
   ],
   projects: [
+
+    {
+      title: "LODE Recruiter Dashboard",
+      href: "",
+      dates: "November 2025",
+      active: true,
+      description:
+        "Recruiter dashboard utilizing AI to analyze candidates quickly.",
+      technologies: [
+        "NextJS",
+        "React",
+        "Tailwind",
+        "TypeScript",
+        "Gemini",
+      ],
+      links: [
+      ],
+      image: "",
+      video:
+        "/lode.mov",
+    },
     {
       title: "clAI - Command Line AI",
       href: "",
