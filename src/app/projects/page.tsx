@@ -47,7 +47,7 @@ export default function Page() {
                   image={project.image}
                   video={project.video}
                   links={project.links}
-                  scale={project.scale !== null ? project.scale : false}
+                  scale={"scale" in project ? project.scale : false}
                 />
               </BlurFade>
             ))}
