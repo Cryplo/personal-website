@@ -119,12 +119,15 @@ export default function GravityGridBackground() {
       const distX = planet.x - px;
       const distY = planet.y - py;
       const dist = Math.sqrt(distX * distX + distY * distY);
-      const minDist = planet.radius * 0.3;
+      const minDist = Math.max(planet.radius * 0.3, 1); // Ensure minDist is at least 1
       const effectiveDist = Math.max(dist, minDist);
 
       // Inverse square law with smooth falloff - MUCH stronger
       const strength = (planet.mass * 15000) / (effectiveDist ** 1.5);
       const falloff = Math.exp(-dist / 600);
+
+      // Guard against NaN - if effectiveDist is somehow 0, skip
+      if (!Number.isFinite(effectiveDist) || effectiveDist === 0) continue;
 
       let planetDx = (distX / effectiveDist) * strength * falloff;
       let planetDy = (distY / effectiveDist) * strength * falloff;
@@ -157,12 +160,13 @@ export default function GravityGridBackground() {
     const mouseDist = Math.sqrt(mouseDistX * mouseDistX + mouseDistY * mouseDistY);
     const mouseRadius = 300;
 
-    if (mouseDist < mouseRadius) {
-      const mouseStrength = (3.0 * 2000) / (mouseDist ** 1.5);
+    if (mouseDist < mouseRadius && Number.isFinite(mouseDist)) {
+      const effectiveMouseDist = Math.max(mouseDist, 30);
+      const mouseStrength = (3.0 * 2000) / (effectiveMouseDist ** 1.5);
       const mouseFalloff = 1 - (mouseDist / mouseRadius);
 
-      let mouseDx = (mouseDistX / Math.max(mouseDist, 30)) * mouseStrength * mouseFalloff;
-      let mouseDy = (mouseDistY / Math.max(mouseDist, 30)) * mouseStrength * mouseFalloff;
+      let mouseDx = (mouseDistX / effectiveMouseDist) * mouseStrength * mouseFalloff;
+      let mouseDy = (mouseDistY / effectiveMouseDist) * mouseStrength * mouseFalloff;
 
       // Cap displacement to never exceed distance to cursor (prevents overshoot)
       const maxMouseDisplacement = mouseDist * 0.9; // Cap at 90% of distance
@@ -209,6 +213,10 @@ export default function GravityGridBackground() {
     const breathe = Math.sin(time * 0.15) * 0.5;
     dx += breathe;
     dy += breathe * 0.7;
+
+    // Final safety check - return 0 if values are non-finite
+    if (!Number.isFinite(dx)) dx = 0;
+    if (!Number.isFinite(dy)) dy = 0;
 
     return { dx, dy };
   }, []);
@@ -367,6 +375,13 @@ export default function GravityGridBackground() {
           } else {
             // Gradient stroke
             const prevPoint = grid[i][j - 1];
+
+            // Skip if any coordinate is non-finite
+            if (!Number.isFinite(prevPoint.x) || !Number.isFinite(prevPoint.y) ||
+                !Number.isFinite(point.x) || !Number.isFinite(point.y)) {
+              continue;
+            }
+
             const gradient = ctx.createLinearGradient(
               prevPoint.x, prevPoint.y,
               point.x, point.y
@@ -423,6 +438,12 @@ export default function GravityGridBackground() {
           const prevG = Math.floor(190 + prevIntensity * 40);
           const prevB = Math.floor(210 - prevIntensity * 50);
           const prevAlpha = baseOpacity + prevIntensity * 0.2;
+
+          // Skip if any coordinate is non-finite
+          if (!Number.isFinite(prevPoint.x) || !Number.isFinite(prevPoint.y) ||
+              !Number.isFinite(point.x) || !Number.isFinite(point.y)) {
+            continue;
+          }
 
           const gradient = ctx.createLinearGradient(
             prevPoint.x, prevPoint.y,
