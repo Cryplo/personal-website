@@ -3,8 +3,15 @@ export default function ProjectsLayout({
 }: {
   children: React.ReactNode;
 }) {
+  // Break out of parent max-w-2xl constraint using calc
   return (
-    <div className="w-full max-w-none px-6"  style={{ marginLeft: '50px', marginRight: '50px' }}>
+    <div
+      className="w-[calc(100vw-100px)]"
+      style={{
+        marginLeft: 'calc(-50vw + 50% + 50px)',
+        marginRight: 'calc(-50vw + 50% + 50px)',
+      }}
+    >
       {children}
     </div>
   );

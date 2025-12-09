@@ -1,6 +1,7 @@
 import Navbar from "@/components/navbar";
 import { ThemeProvider } from "@/components/theme-provider";
 import { TooltipProvider } from "@/components/ui/tooltip";
+import SplashScreenProvider from "@/components/splash-screen-provider";
 import { DATA } from "@/data/resume";
 import { cn } from "@/lib/utils";
 import type { Metadata } from "next";
@@ -59,16 +60,18 @@ export default function RootLayout({
     <html lang="en" suppressHydrationWarning>
       <body
         className={cn(
-          "flex bg-background font-sans antialiased py-12 sm:py-24",
+          "flex bg-background font-sans antialiased max-w-2xl mx-auto py-12 sm:py-24 px-6",
           fontSans.variable
         )}
       >
         <ThemeProvider attribute="class" defaultTheme="dark">
-          <TooltipProvider delayDuration={0}>
-            <SpaceBodyBackground />
-            {children}
-            <Navbar />
-          </TooltipProvider>
+          <SplashScreenProvider>
+            <TooltipProvider delayDuration={0}>
+              <SpaceBodyBackground />
+              {children}
+              <Navbar />
+            </TooltipProvider>
+          </SplashScreenProvider>
         </ThemeProvider>
         <Analytics /> 
       </body>

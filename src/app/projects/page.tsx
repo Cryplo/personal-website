@@ -26,6 +26,9 @@ export default function Page() {
                   I&apos;ve worked on many projects. Here are a few of my
                   favorites.
                 </p>
+                <p className="text-muted-foreground md:text-xl/relaxed lg:text-base/relaxed xl:text-xl/relaxed" style={{marginTop: 0}}>
+                  Click on a project to enlarge
+                </p>
               </div>
             </div>
           </BlurFade>

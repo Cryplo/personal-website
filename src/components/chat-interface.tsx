@@ -52,7 +52,7 @@ export default function ChatInterface(){
   return (
     <section className="relative mx-auto flex flex-1 w-full max-w-6xl flex-col px-4 pt-4">
       <div className="flex flex-1 flex-col-reverse min-h-0 overflow-auto mb-6">
-        <div className="max-h-[212px] flex flex-1 flex-col-reverse space-y-4 space-y-reverse overflow-y-auto pr-1 sm:pr-3 min-h-0">
+        <div className="max-h-[50vh] flex flex-1 flex-col-reverse space-y-4 space-y-reverse overflow-y-auto pr-1 sm:pr-3 min-h-0">
           {messages.toReversed().map((msg) => (
             <div
               key={msg.id}
