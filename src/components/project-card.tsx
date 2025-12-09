@@ -103,6 +103,7 @@ export function ProjectCard({
             autoPlay
             loop
             muted
+            controls
             playsInline
             className="mx-auto w-full max-h-[50vh] object-contain"
           />
