@@ -227,7 +227,7 @@ PHYSICS 240: General Physics II`
       ],
       image: "",
       video:
-        "/groklens.mov",
+        "/groklens-short.mp4",
     },
     {
       title: "LODE Recruiter Dashboard",
