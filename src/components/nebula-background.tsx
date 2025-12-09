@@ -246,20 +246,28 @@ export default function GravityGridBackground() {
       const newX = e.clientX;
       const newY = e.clientY;
 
-      mouseRef.current.vx = (newX - lastMouseRef.current.x * width) * 0.01;
-      mouseRef.current.vy = (newY - lastMouseRef.current.y * height) * 0.01;
+      let vx = (newX - lastMouseRef.current.x * width) * 0.01;
+      let vy = (newY - lastMouseRef.current.y * height) * 0.01;
+
+      // Cap max velocity to ignore flukes (e.g., tab switching, teleporting cursor)
+      const maxVelocity = 0.5;
+      const velocity = Math.sqrt(vx * vx + vy * vy);
+      if (velocity > maxVelocity) {
+        // Ignore this movement entirely - likely a fluke
+        vx = 0;
+        vy = 0;
+      }
+
+      mouseRef.current.vx = vx;
+      mouseRef.current.vy = vy;
       mouseRef.current.x = newX / width;
       mouseRef.current.y = newY / height;
 
       lastMouseRef.current.x = mouseRef.current.x;
       lastMouseRef.current.y = mouseRef.current.y;
 
-      // Create ripples on fast movement
-      const velocity = Math.sqrt(
-        mouseRef.current.vx * mouseRef.current.vx +
-        mouseRef.current.vy * mouseRef.current.vy
-      );
-      if (velocity > 0.15 && ripplesRef.current.length < 5) {
+      // Create ripples on fast (but not too fast) movement
+      if (velocity > 0.15 && velocity <= maxVelocity && ripplesRef.current.length < 5) {
         ripplesRef.current.push({
           x: newX,
           y: newY,
