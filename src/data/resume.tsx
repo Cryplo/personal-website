@@ -200,7 +200,35 @@ PHYSICS 240: General Physics II`
     },
   ],
   projects: [
-
+    {
+      title: "xAI Hackathon: Grok Lens",
+      href: "",
+      dates: "December 2025",
+      active: true,
+      scale: true,
+      description:
+        "AI-powered research and learning partner that turns multiple Grokipedia pages into an intelligent, interactive notebook. Instead of searching across scattered and potentially incorrect notes and web pages, you simply search for your articles on Grokipedia and Grok Lens creates a truth-seeking AI with additional tools inspired by NotebookLM.",
+      technologies: [
+        "NextJS",
+        "FastAPI",
+        "RAG",
+        "Selenium",
+        "Langchain",
+        "React",
+        "Tailwind",
+        "TypeScript",
+        "Grok"
+      ],
+      links: [
+        {
+          type: "Devpost",
+          href: "https://devpost.com/software/grok-lens?ref_content=my-projects-tab&ref_feature=my_projects",
+          icon: <Icons.globe className="size-3" />        }
+      ],
+      image: "",
+      video:
+        "/groklens.mov",
+    },
     {
       title: "LODE Recruiter Dashboard",
       href: "",
@@ -222,7 +250,7 @@ PHYSICS 240: General Physics II`
         "/lode.mov",
     },
     {
-      title: "clAI - Command Line AI",
+      title: "MHacks: clAI - Command Line AI",
       href: "",
       dates: "September 2025",
       active: true,
