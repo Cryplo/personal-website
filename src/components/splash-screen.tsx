@@ -15,13 +15,13 @@ export default function SplashScreen({ onComplete }: SplashScreenProps) {
     // Start fade out after 2.5 seconds
     const fadeTimer = setTimeout(() => {
       setFadeOut(true);
-    }, 3000);
+    }, 2000);
 
     // Complete and hide after 3 seconds
     const completeTimer = setTimeout(() => {
       setIsVisible(false);
       onComplete();
-    }, 3500);
+    }, 2500);
 
     return () => {
       clearTimeout(fadeTimer);
