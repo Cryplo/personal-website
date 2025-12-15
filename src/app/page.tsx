@@ -1,3 +1,5 @@
+"use client";
+
 import { HackathonCard } from "@/components/hackathon-card";
 import BlurFade from "@/components/magicui/blur-fade";
 import BlurFadeText from "@/components/magicui/blur-fade-text";
@@ -8,10 +10,13 @@ import { Badge } from "@/components/ui/badge";
 import { DATA } from "@/data/resume";
 import Link from "next/link";
 import Markdown from "react-markdown";
+import { useEffect, useState } from "react";
 
 const BLUR_FADE_DELAY = 0.04;
 
 export default function Page() {
+  const [isHovered, setIsHovered] = useState(false);
+
   return (
     <main className="flex flex-col min-h-[100dvh] space-y-10">
       <section id="hero">
@@ -31,10 +36,28 @@ export default function Page() {
               />
             </div>
             <BlurFade delay={BLUR_FADE_DELAY}>
-              <Avatar className="size-40 border">
-                <AvatarImage alt={DATA.name} src={DATA.avatarUrl} />
-                <AvatarFallback>{DATA.initials}</AvatarFallback>
-              </Avatar>
+              <div
+                className="relative overflow-hidden size-40 rounded-full border"
+                onMouseEnter={() => setIsHovered(true)}
+                onMouseLeave={() => setIsHovered(false)}
+              >
+                <Avatar
+                  className={`size-40 absolute inset-0 transition-transform duration-500 ease-in-out ${
+                    isHovered ? "translate-x-full" : "translate-x-0"
+                  }`}
+                >
+                  <AvatarImage alt={DATA.name} src={DATA.avatarUrl} />
+                  <AvatarFallback>{DATA.initials}</AvatarFallback>
+                </Avatar>
+                <Avatar
+                  className={`size-40 absolute inset-0 transition-transform duration-500 ease-in-out ${
+                    isHovered ? "translate-x-0" : "-translate-x-full"
+                  }`}
+                >
+                  <AvatarImage alt={DATA.name} src="/me_alt.png" />
+                  <AvatarFallback>{DATA.initials}</AvatarFallback>
+                </Avatar>
+              </div>
             </BlurFade>
           </div>
         </div>
