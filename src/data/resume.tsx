@@ -162,7 +162,7 @@ Enhanced Hazel code editor by resolving UI bugs and developing new features.`,
       logoUrl: "/michigan2.png",
       start: "August 2025",
       end: "Present",
-      gpa:"n/a",
+      gpa:"4.0",
       description:
       `EECS 280: Programming and Intro Data Structures
 EECS 203: Discrete Mathematics
