@@ -166,8 +166,8 @@ Enhanced Hazel code editor by resolving UI bugs and developing new features.`,
       `Current:
 EECS 281: Data Structures and Algorithms
 EECS 370: Introduction to Computer Organization
-Physics 390: Modern Physics
-Physics 391: Modern Physics Lab
+PHYSICS 390: Modern Physics
+PHYSICS 391: Modern Physics Lab
 URP 357: Architecture, Sustainability and the City
 
 Completed:
