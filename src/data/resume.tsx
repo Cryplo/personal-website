@@ -164,7 +164,15 @@ Enhanced Hazel code editor by resolving UI bugs and developing new features.`,
       end: "Present",
       gpa:"4.0",
       description:
-      `EECS 280: Programming and Intro Data Structures
+      `Current:
+EECS 281: Data Structures and Algorithms
+EECS 370: Introduction to Computer Organization
+Physics 390: Modern Physics
+Physics 391: Modern Physics Lab
+URP 357: Architecture, Sustainability and the City
+
+Completed:
+EECS 280: Programming and Intro Data Structures
 EECS 203: Discrete Mathematics
 EECS 201: Computer Science Pragmatics
 PHYSICS 340: Waves, Heat, and Light
@@ -200,6 +208,31 @@ PHYSICS 240: General Physics II`
     },
   ],
   projects: [
+    {
+      title: "V1 Michigan Shipmas",
+      href: "",
+      dates: "December 2025 - January 2025",
+      active: true,
+      scale: true,
+      description:
+        "Built 12 projects over the course of 12 days for the V1 Michigan Shipmas challenge. Each project is built around the prompt of the day.",
+      technologies: [
+        "NextJS",
+        "React",
+        "TypeScript",
+        "Microsoft Foundry",
+        "Tavily"
+      ],
+      links: [
+        {
+          type: "Gallery",
+          href: "https://shipmas-gallery.vercel.app",
+          icon: <Icons.globe className="size-3" />        }
+      ],
+      image: "",
+      video:
+        "/shipmas.mov",
+    },
     {
       title: "xAI Hackathon: Grok Lens",
       href: "",
