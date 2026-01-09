@@ -208,9 +208,34 @@ PHYSICS 240: General Physics II`
   ],
   projects: [
     {
+      title: "GlitterCode",
+      href: "",
+      dates: "December 2025 - January 2026",
+      active: true,
+      scale: true,
+      description:
+        "Cursor for block coding education. Actively in development.",
+      technologies: [
+        "NextJS",
+        "React",
+        "TypeScript",
+        "Python",
+        "FastAPI",
+        "LangGraph",
+        "Microsoft Foundry",
+        "Microsft Azure",
+        "Docker"
+      ],
+      links: [
+      ],
+      image: "",
+      video:
+        "/glittercode.mp4",
+    },
+    {
       title: "V1 Michigan Shipmas",
       href: "",
-      dates: "December 2025 - January 2025",
+      dates: "December 2025 - January 2026",
       active: true,
       scale: true,
       description:
