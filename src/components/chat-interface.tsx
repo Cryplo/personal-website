@@ -37,7 +37,7 @@ export default function ChatInterface(){
             const data = await callGemini(trimmedMessage);
             appendMessage({
                 userSent: false,
-                message: data.candidates?.[0]?.content?.parts?.[0]?.text.trim() ?? "Here’s what I’d say if I could think right now 🙂",
+                message: data.candidates?.[0]?.content?.parts?.[0]?.text.trim() ?? "Here's what I'd say if I could think right now",
             });
         } catch (error) {
             console.error("[ChatInterface] Failed to fetch bot reply:", error);
@@ -50,19 +50,20 @@ export default function ChatInterface(){
     };
 
   return (
-    <section className="relative mx-auto flex flex-1 w-full max-w-6xl flex-col px-4 pt-4">
-      <div className="flex flex-1 flex-col-reverse min-h-0 overflow-auto mb-6">
-        <div className="max-h-[50vh] flex flex-1 flex-col-reverse space-y-4 space-y-reverse overflow-y-auto pr-1 sm:pr-3 min-h-0">
+    <section className="relative mx-auto flex flex-1 w-full max-w-3xl flex-col px-4 py-4">
+      {/* Messages area */}
+      <div className="flex flex-1 flex-col min-h-0 overflow-hidden">
+        <div className="flex-1 flex flex-col-reverse overflow-y-auto pr-2 space-y-4 space-y-reverse">
           {messages.toReversed().map((msg) => (
             <div
               key={msg.id}
               className={`flex ${msg.userSent ? "justify-end" : "justify-start"}`}
             >
               <div
-                className={`max-w-[100%] rounded-3xl px-4 py-3 text-sm leading-relaxed shadow-sm transition-colors ${
+                className={`max-w-[85%] rounded-2xl px-4 py-3 text-sm leading-relaxed ${
                   msg.userSent
-                    ? "bg-muted text-foreground rounded-br-md"
-                    : "bg-muted text-foreground rounded-bl-md"
+                    ? "bg-primary text-primary-foreground rounded-br-sm"
+                    : "bg-muted text-foreground rounded-bl-sm"
                 }`}
               >
                 <p className="whitespace-pre-line">{msg.message}</p>
@@ -72,7 +73,10 @@ export default function ChatInterface(){
         </div>
       </div>
 
-      <SendMessage receiveMessage={receiveUserMessage} />
+      {/* Input area */}
+      <div className="mt-4 pb-4">
+        <SendMessage receiveMessage={receiveUserMessage} loading={loading} />
+      </div>
     </section>
   );
 }

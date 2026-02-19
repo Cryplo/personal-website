@@ -60,7 +60,7 @@ export default function RootLayout({
     <html lang="en" suppressHydrationWarning>
       <body
         className={cn(
-          "flex font-sans antialiased max-w-2xl mx-auto py-12 sm:py-24 px-6",
+          "min-h-screen font-sans antialiased",
           fontSans.variable
         )}
       >
@@ -68,8 +68,10 @@ export default function RootLayout({
           <SplashScreenProvider>
             <TooltipProvider delayDuration={0}>
               <NebulaBackground />
-              {children}
               <Navbar />
+              <main className="ml-64 flex min-h-screen flex-col">
+                {children}
+              </main>
             </TooltipProvider>
           </SplashScreenProvider>
         </ThemeProvider>

@@ -1,33 +1,22 @@
 'use client';
 
-import { Dock, DockIcon } from "@/components/magicui/dock";
-import { ModeToggle } from "@/components/mode-toggle";
-import { buttonVariants } from "@/components/ui/button";
-import { Separator } from "@/components/ui/separator";
-import {
-  Tooltip,
-  TooltipContent,
-  TooltipTrigger,
-} from "@/components/ui/tooltip";
-import { DATA } from "@/data/resume";
 import { cn } from "@/lib/utils";
-import Link from "next/link";
-import { SendIcon } from "lucide-react";
+import { SendIcon, Loader2Icon } from "lucide-react";
 import { useState } from "react";
 
 interface SendMessageProps {
   receiveMessage: (message: string) => void;
+  loading?: boolean;
 }
 
-const SendMessage: React.FC<SendMessageProps> = ({ receiveMessage }) => {
+const SendMessage: React.FC<SendMessageProps> = ({ receiveMessage, loading = false }) => {
   const [message, setMessage] = useState('');
-  const [loading, setLoading] = useState(false);
 
   const handleSendMessage = async () => {
+    if (!message.trim() || loading) return;
+    const msg = message;
     setMessage("");
-    setLoading(true);
-    await receiveMessage(message);
-    setLoading(false);
+    await receiveMessage(msg);
   }
 
   const handleKeyPress = (event: React.KeyboardEvent) => {
@@ -37,23 +26,38 @@ const SendMessage: React.FC<SendMessageProps> = ({ receiveMessage }) => {
     }
   }
 
-  const handleSendPress = () => {
-    handleSendMessage();
-  }
-
   return (
-    <div className="inset-x-0 bottom-0 z-30 mx-auto flex origin-bottom">
-      <div className="bottom-0 inset-x-0 h-8 w-full bg-background to-transparent backdrop-blur-lg [-webkit-mask-image:linear-gradient(to_top,black,transparent)] dark:bg-background"></div>
-      <Dock className="z-50 relative mx-auto inline-flex w-fit items-center px-1 bg-background [box-shadow:0_0_0_1px_rgba(0,0,0,.03),0_2px_4px_rgba(0,0,0,.05),0_12px_24px_rgba(0,0,0,.05)] transform-gpu dark:[border:1px_solid_rgba(255,255,255,.1)] dark:[box-shadow:0_-20px_80px_-20px_#ffffff1f_inset] ">
-          <DockIcon fluid className = "w-fit">
-            <input readOnly={loading} type="text" placeholder={loading ? "Loading..." : "Send a message"} value = {message} className="h-6 px-4 min-w-[300px] md:min-w-[400px] bg-transparent border-none outline-none focus:ring-0" onChange={(event) => {setMessage(event.target.value)}} onKeyDown={(event) => handleKeyPress(event)}/>
-          </DockIcon>
-          <DockIcon>
-            <button className="size-8" onClick={()=>handleSendPress()}>
-              <SendIcon className="size-4" />
-            </button>
-          </DockIcon>
-      </Dock>
+    <div className="relative flex items-center w-full">
+      <div className="relative flex w-full items-center rounded-2xl border border-border/50 bg-muted/50 backdrop-blur-sm transition-colors focus-within:border-border">
+        <input
+          readOnly={loading}
+          type="text"
+          placeholder={loading ? "Thinking..." : "Ask me anything..."}
+          value={message}
+          className={cn(
+            "flex-1 bg-transparent px-4 py-3 text-sm outline-none placeholder:text-muted-foreground",
+            loading && "cursor-not-allowed opacity-50"
+          )}
+          onChange={(event) => setMessage(event.target.value)}
+          onKeyDown={(event) => handleKeyPress(event)}
+        />
+        <button
+          className={cn(
+            "mr-2 flex size-8 items-center justify-center rounded-lg transition-colors",
+            message.trim() && !loading
+              ? "bg-primary text-primary-foreground hover:bg-primary/90"
+              : "text-muted-foreground"
+          )}
+          onClick={handleSendMessage}
+          disabled={!message.trim() || loading}
+        >
+          {loading ? (
+            <Loader2Icon className="size-4 animate-spin" />
+          ) : (
+            <SendIcon className="size-4" />
+          )}
+        </button>
+      </div>
     </div>
   );
 }
