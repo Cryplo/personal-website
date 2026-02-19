@@ -75,7 +75,7 @@ Dylan Li is a Computer Science and Engineering Physics student at the University
    - Unity racing game with AI opponents using ML-Agents reinforcement learning
 
 ## Skills
-Languages: C++, Java, Python, Go, TypeScript, C#
+Languages: C++, Java, Python, TypeScript, C#
 Frameworks: React, Next.js, FastAPI, Electron, Unity
 Tools: Docker, Kubernetes, LangChain, SQL
 
@@ -83,6 +83,7 @@ Tools: Docker, Kubernetes, LangChain, SQL
 - "MHacks 2025: My First Hackathon" - About winning the Google Gemini Track
 - "xAI Tech Day 2025: My First Time in NYC" - Visiting xAI's NYC office
 - "xAI Hackathon 2025: My First Time in the Bay" - Attending xAI's SF hackathon
+- "Why Blog?" - Why have a blog in the first place
 
 ## Contact
 - Email: lidylan@umich.edu
