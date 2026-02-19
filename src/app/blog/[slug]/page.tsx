@@ -101,18 +101,18 @@ export default async function Blog({
           Back to blog
         </Link>
 
-        <h1 className="title font-medium text-2xl tracking-tighter">
+        <h1 className="title font-medium text-3xl tracking-tighter">
           {post.metadata.title}
         </h1>
-        <div className="flex justify-between items-center mt-2 mb-8 text-sm">
+        <div className="flex justify-between items-center mt-2 mb-8">
           <Suspense fallback={<p className="h-5" />}>
-            <p className="text-sm text-neutral-600 dark:text-neutral-400">
+            <p className="text-base text-neutral-600 dark:text-neutral-400">
               {formatDate(post.metadata.publishedAt)}
             </p>
           </Suspense>
         </div>
         <article
-          className="prose dark:prose-invert max-w-none"
+          className="prose prose-lg dark:prose-invert max-w-none"
           dangerouslySetInnerHTML={{ __html: post.source }}
         ></article>
       </section>

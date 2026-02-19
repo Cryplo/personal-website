@@ -75,11 +75,11 @@ export default function ChatInterface(){
         );
     }
 
-    // Conversation state - messages with input at bottom
+    // Conversation state - messages with floating input at bottom
     return (
-        <section className="relative mx-auto flex flex-1 w-full max-w-3xl flex-col px-4 py-6">
-            {/* Messages area */}
-            <div className="flex-1 overflow-y-auto pr-2 mb-4">
+        <section className="relative mx-auto flex flex-1 w-full max-w-3xl flex-col px-4">
+            {/* Messages area - scrollable */}
+            <div className="flex-1 overflow-y-auto pr-2 py-6">
                 <div className="flex flex-col space-y-4">
                     {messages.map((msg) => (
                         <div
@@ -100,8 +100,10 @@ export default function ChatInterface(){
                 </div>
             </div>
 
-            {/* Input area */}
-            <SendMessage receiveMessage={receiveUserMessage} loading={loading} />
+            {/* Floating input area */}
+            <div className="sticky bottom-0 pb-6 pt-4 bg-gradient-to-t from-background via-background to-transparent">
+                <SendMessage receiveMessage={receiveUserMessage} loading={loading} />
+            </div>
         </section>
     );
 }

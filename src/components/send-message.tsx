@@ -28,14 +28,14 @@ const SendMessage: React.FC<SendMessageProps> = ({ receiveMessage, loading = fal
 
   return (
     <div className="relative flex items-center w-full">
-      <div className="relative flex w-full items-center rounded-3xl border border-border/50 bg-muted/50 backdrop-blur-sm transition-colors focus-within:border-border">
+      <div className="relative flex w-full items-center rounded-3xl border border-border/70 bg-[hsl(0,0%,20%)] transition-all duration-200 focus-within:border-primary/60">
         <input
           readOnly={loading}
           type="text"
           placeholder={loading ? "Thinking..." : "Ask me anything..."}
           value={message}
           className={cn(
-            "flex-1 bg-transparent px-6 py-4 text-base outline-none placeholder:text-muted-foreground",
+            "flex-1 bg-transparent px-6 py-5 text-lg outline-none placeholder:text-muted-foreground/70",
             loading && "cursor-not-allowed opacity-50"
           )}
           onChange={(event) => setMessage(event.target.value)}
@@ -43,7 +43,7 @@ const SendMessage: React.FC<SendMessageProps> = ({ receiveMessage, loading = fal
         />
         <button
           className={cn(
-            "mr-3 flex size-10 items-center justify-center rounded-xl transition-colors",
+            "mr-4 flex size-11 items-center justify-center rounded-xl transition-colors",
             message.trim() && !loading
               ? "bg-primary text-primary-foreground hover:bg-primary/90"
               : "text-muted-foreground"

@@ -26,7 +26,7 @@ export default function AboutPage() {
                 text={`Hi, I'm ${DATA.name.split(" ")[0]}`}
               />
               <BlurFadeText
-                className="max-w-[600px] md:text-xl whitespace-pre-wrap"
+                className="max-w-[600px] text-lg md:text-xl whitespace-pre-wrap"
                 delay={BLUR_FADE_DELAY}
                 text={DATA.description}
               />
@@ -60,10 +60,10 @@ export default function AboutPage() {
       </section>
       <section id="about" className="!mt-0">
         <BlurFade delay={BLUR_FADE_DELAY * 2}>
-          <h2 className="text-xl font-bold">About</h2>
+          <h2 className="text-2xl font-bold mb-2">About</h2>
         </BlurFade>
         <BlurFade delay={BLUR_FADE_DELAY * 3}>
-          <Markdown className="prose max-w-full text-pretty font-sans text-sm dark:prose-invert whitespace-pre-wrap">
+          <Markdown className="prose prose-lg max-w-full text-pretty font-sans dark:prose-invert whitespace-pre-wrap">
             {DATA.summary}
           </Markdown>
         </BlurFade>
@@ -71,7 +71,7 @@ export default function AboutPage() {
       <section id="education">
         <div className="flex min-h-0 flex-col gap-y-3">
           <BlurFade delay={BLUR_FADE_DELAY * 4}>
-            <h2 className="text-xl font-bold">Education</h2>
+            <h2 className="text-2xl font-bold">Education</h2>
           </BlurFade>
           {DATA.education.map((education, id) => (
             <BlurFade
@@ -97,7 +97,7 @@ export default function AboutPage() {
       <section id="work">
         <div className="flex min-h-0 flex-col gap-y-3">
           <BlurFade delay={BLUR_FADE_DELAY * 6}>
-            <h2 className="text-xl font-bold">Experience</h2>
+            <h2 className="text-2xl font-bold">Experience</h2>
           </BlurFade>
           {DATA.work.map((work, id) => (
             <BlurFade
