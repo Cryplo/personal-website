@@ -46,11 +46,11 @@ export default function ChatInterface(){
 
         // Build chat history for API
         const chatHistory: ChatMessage[] = [
-            ...messages.map((msg) => ({
-                role: (msg.userSent ? 'user' : 'assistant') as const,
+            ...messages.map((msg): ChatMessage => ({
+                role: msg.userSent ? 'user' : 'assistant',
                 content: msg.message,
             })),
-            { role: 'user' as const, content: trimmedMessage },
+            { role: 'user', content: trimmedMessage },
         ];
 
         // Create empty bot message to stream into
