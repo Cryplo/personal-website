@@ -1,7 +1,7 @@
 "use client";
 
 import { useRef, useState } from "react";
-import { streamChat } from "@/lib/chat";
+import { streamChat, ChatMessage } from "@/lib/chat";
 import SendMessage from "./send-message";
 import BlurFade from "@/components/magicui/blur-fade";
 
@@ -44,12 +44,21 @@ export default function ChatInterface(){
         appendMessage({ userSent: true, message: trimmedMessage });
         setLoading(true);
 
+        // Build chat history for API
+        const chatHistory: ChatMessage[] = [
+            ...messages.map((msg) => ({
+                role: (msg.userSent ? 'user' : 'assistant') as const,
+                content: msg.message,
+            })),
+            { role: 'user' as const, content: trimmedMessage },
+        ];
+
         // Create empty bot message to stream into
         const botMessageId = appendMessage({ userSent: false, message: "" });
         let accumulatedText = "";
 
         try {
-            await streamChat(trimmedMessage, (chunk) => {
+            await streamChat(chatHistory, (chunk) => {
                 accumulatedText += chunk;
                 updateMessage(botMessageId, accumulatedText);
             });

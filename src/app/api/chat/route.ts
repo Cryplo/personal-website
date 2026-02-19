@@ -97,12 +97,12 @@ Tools: Docker, Kubernetes, LangChain, SQL
 - He's a quick learner who loves building and shipping projects rapidly
 `
   try {
-    const { prompt } = await request.json();
+    const { messages } = await request.json();
 
     // Validate input
-    if (!prompt || typeof prompt !== 'string') {
+    if (!messages || !Array.isArray(messages)) {
       return NextResponse.json(
-        { error: 'Invalid prompt' },
+        { error: 'Invalid messages' },
         { status: 400 }
       );
     }
@@ -121,7 +121,7 @@ Tools: Docker, Kubernetes, LangChain, SQL
           stream: true,
           messages: [
             { role: 'system', content: systemPrompt },
-            { role: 'user', content: prompt }
+            ...messages
           ]
         })
       }

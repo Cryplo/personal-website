@@ -1,11 +1,16 @@
+export interface ChatMessage {
+  role: 'user' | 'assistant';
+  content: string;
+}
+
 export async function streamChat(
-  prompt: string,
+  messages: ChatMessage[],
   onChunk: (text: string) => void
 ): Promise<void> {
   const response = await fetch('/api/chat', {
     method: 'POST',
     headers: { 'Content-Type': 'application/json' },
-    body: JSON.stringify({ prompt })
+    body: JSON.stringify({ messages })
   });
 
   if (!response.ok) {
