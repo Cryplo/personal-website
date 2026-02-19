@@ -106,30 +106,46 @@ Tools: Docker, Kubernetes, LangChain, SQL
       );
     }
 
-    // Call Gemini API - key is secure on server
+    // Call OpenRouter API
     const response = await fetch(
-        `https://generativelanguage.googleapis.com/v1beta/models/gemini-2.5-flash:generateContent`,
+      'https://openrouter.ai/api/v1/chat/completions',
       {
         method: 'POST',
-        headers: { 'x-goog-api-key': process.env.GEMINI_API_KEY || '','Content-Type': 'application/json' },
+        headers: {
+          'Content-Type': 'application/json',
+          'Authorization': `Bearer ${process.env.OPENROUTER_API_KEY || ''}`
+        },
         body: JSON.stringify({
-            systemInstruction: {
-                parts: [{text: systemPrompt}]
-            },
-          contents: [{ parts: [{ text: prompt }] }]
+          model: 'stepfun/step-3.5-flash:free',
+          messages: [
+            { role: 'system', content: systemPrompt },
+            { role: 'user', content: prompt }
+          ]
         })
       }
     );
 
     if (!response.ok) {
-      throw new Error('Gemini API request failed');
+      throw new Error('OpenRouter API request failed');
     }
 
     const data = await response.json();
-    return NextResponse.json(data);
+
+    // Transform response to match expected format
+    const transformedResponse = {
+      candidates: [{
+        content: {
+          parts: [{
+            text: data.choices?.[0]?.message?.content || ''
+          }]
+        }
+      }]
+    };
+
+    return NextResponse.json(transformedResponse);
 
   } catch (error) {
-    console.error('Gemini API error:', error);
+    console.error('OpenRouter API error:', error);
     return NextResponse.json(
       { error: 'Failed to process request' },
       { status: 500 }
