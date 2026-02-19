@@ -57,11 +57,11 @@ export default function ChatInterface(){
         return (
             <div className="flex flex-1 flex-col items-center justify-center px-4">
                 <BlurFade delay={BLUR_FADE_DELAY}>
-                    <div className="flex flex-col items-center justify-center space-y-4 text-center mb-8">
-                        <h1 className="text-4xl font-bold tracking-tighter sm:text-5xl md:text-6xl">
+                    <div className="flex flex-col items-center justify-center space-y-3 text-center mb-6">
+                        <h1 className="text-3xl font-bold tracking-tighter sm:text-4xl md:text-5xl">
                             Chat with &quot;Dylan&quot;
                         </h1>
-                        <p className="max-w-[600px] text-muted-foreground md:text-lg">
+                        <p className="max-w-[600px] text-muted-foreground text-base">
                             This is an AI chatbot that I built based on my resume and experiences.
                             <br />
                             It does not represent my opinions or beliefs, and is purely for fun.
