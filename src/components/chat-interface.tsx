@@ -1,7 +1,7 @@
 "use client";
 
 import { useRef, useState } from "react";
-import { callGemini } from "@/lib/gemini";
+import { streamChat } from "@/lib/chat";
 import SendMessage from "./send-message";
 import BlurFade from "@/components/magicui/blur-fade";
 
@@ -24,6 +24,15 @@ export default function ChatInterface(){
             id: nextMessageId.current++,
         };
         setMessages((prev) => [...prev, messageWithId]);
+        return messageWithId.id;
+    };
+
+    const updateMessage = (id: number, text: string) => {
+        setMessages((prev) =>
+            prev.map((msg) =>
+                msg.id === id ? { ...msg, message: text } : msg
+            )
+        );
     };
 
     const receiveUserMessage = async (message: string) => {
@@ -34,18 +43,26 @@ export default function ChatInterface(){
 
         appendMessage({ userSent: true, message: trimmedMessage });
         setLoading(true);
+
+        // Create empty bot message to stream into
+        const botMessageId = appendMessage({ userSent: false, message: "" });
+        let accumulatedText = "";
+
         try {
-            const data = await callGemini(trimmedMessage);
-            appendMessage({
-                userSent: false,
-                message: data.candidates?.[0]?.content?.parts?.[0]?.text.trim() ?? "Here's what I'd say if I could think right now",
+            await streamChat(trimmedMessage, (chunk) => {
+                accumulatedText += chunk;
+                updateMessage(botMessageId, accumulatedText);
             });
+
+            // Trim final message
+            if (accumulatedText.trim()) {
+                updateMessage(botMessageId, accumulatedText.trim());
+            } else {
+                updateMessage(botMessageId, "Here's what I'd say if I could think right now");
+            }
         } catch (error) {
             console.error("[ChatInterface] Failed to fetch bot reply:", error);
-            appendMessage({
-                userSent: false,
-                message: "I ran into a hiccup responding. Mind trying again?",
-            });
+            updateMessage(botMessageId, "I ran into a hiccup responding. Mind trying again?");
         }
         setLoading(false);
     };
@@ -87,10 +104,10 @@ export default function ChatInterface(){
                             className={`flex ${msg.userSent ? "justify-end" : "justify-start"}`}
                         >
                             <div
-                                className={`max-w-[85%] rounded-2xl px-5 py-4 text-lg leading-relaxed ${
+                                className={`max-w-[85%] rounded-2xl px-4 py-3 text-base leading-relaxed ${
                                     msg.userSent
-                                        ? "bg-[hsl(220,70%,45%)] text-white rounded-br-sm"
-                                        : "bg-muted text-foreground rounded-bl-sm"
+                                        ? "bg-muted text-foreground rounded-br-sm"
+                                        : "text-foreground rounded-bl-sm"
                                 }`}
                             >
                                 <p className="whitespace-pre-line">{msg.message}</p>

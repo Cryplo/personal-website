@@ -35,7 +35,7 @@ const SendMessage: React.FC<SendMessageProps> = ({ receiveMessage, loading = fal
           placeholder={loading ? "Thinking..." : "Ask me anything..."}
           value={message}
           className={cn(
-            "flex-1 bg-transparent px-6 py-5 text-lg outline-none placeholder:text-muted-foreground/70",
+            "flex-1 bg-transparent px-5 py-3 text-base outline-none placeholder:text-muted-foreground/70",
             loading && "cursor-not-allowed opacity-50"
           )}
           onChange={(event) => setMessage(event.target.value)}
@@ -43,18 +43,18 @@ const SendMessage: React.FC<SendMessageProps> = ({ receiveMessage, loading = fal
         />
         <button
           className={cn(
-            "mr-4 flex size-11 items-center justify-center rounded-xl transition-colors",
+            "mr-3 flex size-9 items-center justify-center rounded-lg transition-colors",
             message.trim() && !loading
-              ? "bg-[hsl(220,70%,45%)] text-white hover:bg-[hsl(220,70%,40%)]"
+              ? "text-foreground hover:text-foreground/70"
               : "text-muted-foreground"
           )}
           onClick={handleSendMessage}
           disabled={!message.trim() || loading}
         >
           {loading ? (
-            <Loader2Icon className="size-5 animate-spin" />
+            <Loader2Icon className="size-4 animate-spin" />
           ) : (
-            <SendIcon className="size-5" />
+            <SendIcon className="size-4" />
           )}
         </button>
       </div>

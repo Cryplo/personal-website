@@ -32,7 +32,7 @@ export default function Page() {
               </div>
             </div>
           </BlurFade>
-          <div className="grid grid-cols-1 gap-8 sm:grid-cols-2 lg:grid-cols-3 max-w-6xl w-full mx-auto">
+          <div className="grid gap-6 max-w-6xl w-full mx-auto px-4" style={{ gridTemplateColumns: "repeat(auto-fit, minmax(300px, 1fr))" }}>
             {DATA.projects.map((project, id) => (
               <BlurFade
                 key={project.title}

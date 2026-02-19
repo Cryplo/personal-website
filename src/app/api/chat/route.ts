@@ -9,6 +9,7 @@ You are "Dylan's AI Persona," an AI assistant on Dylan Li's portfolio website. Y
 - Be friendly, professional, and enthusiastic
 - Never fabricate information—only use what's provided below
 - Politely decline inappropriate, political, or overly personal questions
+- Use plain text only, no markdown formatting
 
 ## About Dylan
 Dylan Li is a Computer Science and Engineering Physics student at the University of Michigan (Go Blue!). He's passionate about technology, startups, physics, and problem-solving. In his spare time, he loves working on side projects, hitting the gym, running with friends, eating good food, and practicing on MonkeyType.
@@ -106,7 +107,7 @@ Tools: Docker, Kubernetes, LangChain, SQL
       );
     }
 
-    // Call OpenRouter API
+    // Call OpenRouter API with streaming
     const response = await fetch(
       'https://openrouter.ai/api/v1/chat/completions',
       {
@@ -117,6 +118,7 @@ Tools: Docker, Kubernetes, LangChain, SQL
         },
         body: JSON.stringify({
           model: 'stepfun/step-3.5-flash:free',
+          stream: true,
           messages: [
             { role: 'system', content: systemPrompt },
             { role: 'user', content: prompt }
@@ -129,20 +131,56 @@ Tools: Docker, Kubernetes, LangChain, SQL
       throw new Error('OpenRouter API request failed');
     }
 
-    const data = await response.json();
+    // Stream the response back to client
+    const encoder = new TextEncoder();
+    const decoder = new TextDecoder();
 
-    // Transform response to match expected format
-    const transformedResponse = {
-      candidates: [{
-        content: {
-          parts: [{
-            text: data.choices?.[0]?.message?.content || ''
-          }]
+    const stream = new ReadableStream({
+      async start(controller) {
+        const reader = response.body?.getReader();
+        if (!reader) {
+          controller.close();
+          return;
         }
-      }]
-    };
 
-    return NextResponse.json(transformedResponse);
+        try {
+          while (true) {
+            const { done, value } = await reader.read();
+            if (done) break;
+
+            const chunk = decoder.decode(value, { stream: true });
+            const lines = chunk.split('\n');
+
+            for (const line of lines) {
+              if (line.startsWith('data: ')) {
+                const data = line.slice(6);
+                if (data === '[DONE]') continue;
+
+                try {
+                  const parsed = JSON.parse(data);
+                  const content = parsed.choices?.[0]?.delta?.content;
+                  if (content) {
+                    controller.enqueue(encoder.encode(content));
+                  }
+                } catch {
+                  // Skip invalid JSON
+                }
+              }
+            }
+          }
+        } finally {
+          reader.releaseLock();
+          controller.close();
+        }
+      }
+    });
+
+    return new Response(stream, {
+      headers: {
+        'Content-Type': 'text/plain; charset=utf-8',
+        'Transfer-Encoding': 'chunked',
+      },
+    });
 
   } catch (error) {
     console.error('OpenRouter API error:', error);
