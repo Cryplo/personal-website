@@ -89,6 +89,30 @@ In my spare time, I love to work on side-projects, hit the gym, run with friends
 
   work: [
     {
+      company: "V1 Michigan",
+      href: "https://v1michigan.com",
+      badges: [],
+      location: "Ann Arbor, Michigan",
+      title: "Software Developer",
+      logoUrl: "/v1.jpeg",
+      start: "January 2025",
+      end: "Present",
+      description:
+        "W26 Product Studio Cohort",
+    },
+    {
+      company: "Future of Programming Lab",
+      href: "https://hazel.org",
+      badges: [],
+      location: "Ann Arbor, Michigan",
+      title: "Lab Member",
+      logoUrl: "/michigan2.png",
+      start: "May 2025",
+      end: "Present",
+      description:
+`Researching Vim-style keybinds and action macros in the Hazel editor.`,
+    },
+    {
       company: "Menlo Innovations",
       href: "https://google.com",
       badges: [],
@@ -108,23 +132,10 @@ In my spare time, I love to work on side-projects, hit the gym, run with friends
       title: "Augmented Reality Software Engineer",
       logoUrl: "/claws.jpeg",
       start: "September 2025",
-      end: "Present",
+      end: "December 2025",
       description:
         "Developing AR interfaces in Unity for the NASA Suit's challenge.",
     }, 
-    {
-      company: "Future of Programming Lab",
-      href: "https://hazel.org",
-      badges: [],
-      location: "Ann Arbor, Michigan",
-      title: "Lab Member",
-      logoUrl: "/michigan2.png",
-      start: "May 2025",
-      end: "Present",
-      description:
-`Researching Vim-style keybinds and action macros in the Hazel editor.
-Enhanced Hazel code editor by resolving UI bugs and developing new features.`,
-    },
     {
       company: "The Future Innovators Academy",
       badges: [],
@@ -135,19 +146,7 @@ Enhanced Hazel code editor by resolving UI bugs and developing new features.`,
       start: "July 2025",
       end: "August 2025",
       description:
-        "Instructed children ages 5–13 in programming, Arduino, electronics, CAD, and graphic design, fostering both technical skills and healthy personal habits in an engaging learning environment",
-    },
-    {
-      company: "Pioneer High School FRC Robotics",
-      href: "https://pihisamurai.org",
-      badges: [],
-      location: "Ann Arbor, Michigan",
-      title: "Engineering Captain",
-      logoUrl: "/pihi.png",
-      start: "September 2021",
-      end: "May 2025",
-      description:
-        "Directed a 70-person team to design, build, and program three robots, managing the entire engineering process, coordinating cross-team collaboration, and ensuring timely project completion. Transformed software stack by migrating from Python to Java, adopting functional programming practices, and improving odometry precision, computer vision reliability, and motion control accuracy. Advanced team ranking from 40th percentile to 93rd percentile worldwide in three years",
+        "Instructed children ages 5–13 in programming, Arduino, electronics, CAD, and graphic design.",
     },
     
   ],
@@ -203,7 +202,7 @@ PHYSICS 240: General Physics II`
       end: "May 2025",
       gpa:"4.0",
       description:
-      "FRC Team 1076, Varsity Tennis, Wharton Global Youth Investment Competition, Asian Youth Club"
+      "FRC Team 1076, Varsity Tennis, Wharton Global Youth Investment Competition"
     },
   ],
   projects: [
