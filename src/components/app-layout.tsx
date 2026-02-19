@@ -17,7 +17,7 @@ function LayoutContent({ children }: { children: ReactNode }) {
         onClick={toggle}
         className={cn(
           "fixed top-5 z-40 flex size-8 items-center justify-center rounded-md transition-all duration-300 text-muted-foreground hover:text-foreground",
-          isOpen ? "left-[216px]" : "left-4"
+          isOpen ? "left-[180px]" : "left-4"
         )}
         aria-label={isOpen ? "Hide sidebar" : "Show sidebar"}
       >

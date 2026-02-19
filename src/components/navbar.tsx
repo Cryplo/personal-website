@@ -20,7 +20,7 @@ export default function Navbar() {
   return (
     <aside
       className={cn(
-        "fixed left-0 top-0 z-30 flex h-full w-64 flex-col border-r border-border/40 bg-[hsl(0,0%,9%)] transition-transform duration-300",
+        "fixed left-0 top-0 z-30 flex h-full w-56 flex-col border-r border-border/40 bg-[hsl(0,0%,9%)] transition-transform duration-300",
         isOpen ? "translate-x-0" : "-translate-x-full"
       )}
     >
@@ -60,7 +60,7 @@ export default function Navbar() {
       </nav>
 
       {/* Social Links / Footer */}
-      <div className="border-t border-border/40 p-4">
+      <div className="border-border/40 p-4">
         <Separator className="mb-3" />
         <div className="flex flex-wrap gap-2">
           {Object.entries(DATA.contact.social)
@@ -79,9 +79,6 @@ export default function Navbar() {
                     <social.icon className="size-5" />
                   </Link>
                 </TooltipTrigger>
-                <TooltipContent side="top">
-                  <p>{name}</p>
-                </TooltipContent>
               </Tooltip>
             ))}
         </div>
