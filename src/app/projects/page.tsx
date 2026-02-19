@@ -13,7 +13,7 @@ const BLUR_FADE_DELAY = 0.04;
 
 export default function Page() {
   return (
-    <main className="flex flex-col min-h-[100dvh] space-y-10">
+    <main className="flex flex-col min-h-[100dvh]">
       <section id="projects">
         <div className="space-y-12 w-full">
           <BlurFade delay={BLUR_FADE_DELAY}>
@@ -32,7 +32,7 @@ export default function Page() {
               </div>
             </div>
           </BlurFade>
-          <div className="grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 w-full mx-auto">
+          <div className="grid grid-cols-1 gap-8 sm:grid-cols-2 lg:grid-cols-3 max-w-6xl w-full mx-auto">
             {DATA.projects.map((project, id) => (
               <BlurFade
                 key={project.title}
