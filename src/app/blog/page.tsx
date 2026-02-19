@@ -13,7 +13,7 @@ export default async function BlogPage() {
   const posts = await getBlogPosts();
 
   return (
-    <main className="flex flex-col min-h-[100dvh] p-6 sm:p-12 max-w-4xl mx-auto">
+    <main className="flex flex-col min-h-[100dvh] px-6 sm:px-12 pt-16 sm:pt-24 pb-12 max-w-4xl mx-auto">
       <div className="space-y-8 w-full">
         <BlurFade delay={BLUR_FADE_DELAY}>
           <div className="flex flex-col items-center justify-center space-y-4 text-center">

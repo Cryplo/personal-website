@@ -14,7 +14,7 @@ export default function AboutPage() {
   const [isHovered, setIsHovered] = useState(false);
 
   return (
-    <main className="flex flex-col min-h-[100dvh] space-y-10 p-6 sm:p-12 max-w-4xl mx-auto">
+    <main className="flex flex-col min-h-[100dvh] space-y-10 px-6 sm:px-12 pt-16 sm:pt-24 pb-12 max-w-4xl mx-auto">
       <section id="hero">
         <div className="mx-auto w-full space-y-8">
           <div className="gap-2 flex justify-between">

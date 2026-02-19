@@ -16,7 +16,7 @@ function LayoutContent({ children }: { children: ReactNode }) {
       <button
         onClick={toggle}
         className={cn(
-          "fixed top-3 z-40 flex size-8 items-center justify-center rounded-md border border-border/50 bg-background/80 backdrop-blur-sm transition-all duration-300 hover:bg-muted",
+          "fixed top-5 z-40 flex size-8 items-center justify-center rounded-md border border-border/50 bg-background/80 backdrop-blur-sm transition-all duration-300 hover:bg-muted",
           isOpen ? "left-[216px]" : "left-4"
         )}
         aria-label={isOpen ? "Hide sidebar" : "Show sidebar"}

@@ -25,7 +25,7 @@ export default function Navbar() {
       )}
     >
       {/* Header / Logo Area */}
-      <div className="flex h-14 items-center border-b border-border/40 px-4">
+      <div className="flex h-[72px] items-center border-b border-border/40 px-4">
         <Link href="/" className="flex items-center gap-2">
           <span className="text-lg font-semibold">{DATA.name}</span>
         </Link>
