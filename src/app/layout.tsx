@@ -1,8 +1,7 @@
-import Navbar from "@/components/navbar";
+import AppLayout from "@/components/app-layout";
 import { ThemeProvider } from "@/components/theme-provider";
 import { TooltipProvider } from "@/components/ui/tooltip";
 import SplashScreenProvider from "@/components/splash-screen-provider";
-import NebulaBackground from "@/components/nebula-background";
 import { DATA } from "@/data/resume";
 import { cn } from "@/lib/utils";
 import type { Metadata } from "next";
@@ -67,11 +66,9 @@ export default function RootLayout({
         <ThemeProvider attribute="class" defaultTheme="dark">
           <SplashScreenProvider>
             <TooltipProvider delayDuration={0}>
-              <NebulaBackground />
-              <Navbar />
-              <main className="ml-64 flex min-h-screen flex-col">
+              <AppLayout>
                 {children}
-              </main>
+              </AppLayout>
             </TooltipProvider>
           </SplashScreenProvider>
         </ThemeProvider>

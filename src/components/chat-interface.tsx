@@ -3,6 +3,7 @@
 import { useRef, useState } from "react";
 import { callGemini } from "@/lib/gemini";
 import SendMessage from "./send-message";
+import BlurFade from "@/components/magicui/blur-fade";
 
 interface Message {
     id: number,
@@ -10,11 +11,11 @@ interface Message {
     message: string,
 }
 
+const BLUR_FADE_DELAY = 0.04;
+
 export default function ChatInterface(){
     const nextMessageId = useRef(1);
-    const [messages, setMessages] = useState<Message[]>([
-        {id: 0, userSent: false, message: "Hi! I'm Dylan's AI Persona. Feel free to ask me any questions about Dylan!"}
-    ]);
+    const [messages, setMessages] = useState<Message[]>([]);
     const [loading, setLoading] = useState(false);
 
     const appendMessage = (entry: Omit<Message, "id">) => {
@@ -49,34 +50,58 @@ export default function ChatInterface(){
         setLoading(false);
     };
 
-  return (
-    <section className="relative mx-auto flex flex-1 w-full max-w-3xl flex-col px-4 py-4">
-      {/* Messages area */}
-      <div className="flex flex-1 flex-col min-h-0 overflow-hidden">
-        <div className="flex-1 flex flex-col-reverse overflow-y-auto pr-2 space-y-4 space-y-reverse">
-          {messages.toReversed().map((msg) => (
-            <div
-              key={msg.id}
-              className={`flex ${msg.userSent ? "justify-end" : "justify-start"}`}
-            >
-              <div
-                className={`max-w-[85%] rounded-2xl px-4 py-3 text-sm leading-relaxed ${
-                  msg.userSent
-                    ? "bg-primary text-primary-foreground rounded-br-sm"
-                    : "bg-muted text-foreground rounded-bl-sm"
-                }`}
-              >
-                <p className="whitespace-pre-line">{msg.message}</p>
-              </div>
-            </div>
-          ))}
-        </div>
-      </div>
+    const hasMessages = messages.length > 0;
 
-      {/* Input area */}
-      <div className="mt-4 pb-4">
-        <SendMessage receiveMessage={receiveUserMessage} loading={loading} />
-      </div>
-    </section>
-  );
+    // Initial state - centered title and input
+    if (!hasMessages) {
+        return (
+            <div className="flex flex-1 flex-col items-center justify-center px-4">
+                <BlurFade delay={BLUR_FADE_DELAY}>
+                    <div className="flex flex-col items-center justify-center space-y-4 text-center mb-8">
+                        <h1 className="text-4xl font-bold tracking-tighter sm:text-5xl md:text-6xl">
+                            Chat with &quot;Dylan&quot;
+                        </h1>
+                        <p className="max-w-[600px] text-muted-foreground md:text-lg">
+                            This is an AI chatbot that I built based on my resume and experiences.
+                            <br />
+                            It does not represent my opinions or beliefs, and is purely for fun.
+                        </p>
+                    </div>
+                </BlurFade>
+                <BlurFade delay={BLUR_FADE_DELAY * 2} className="w-full max-w-2xl">
+                    <SendMessage receiveMessage={receiveUserMessage} loading={loading} />
+                </BlurFade>
+            </div>
+        );
+    }
+
+    // Conversation state - messages with input at bottom
+    return (
+        <section className="relative mx-auto flex flex-1 w-full max-w-3xl flex-col px-4 py-6">
+            {/* Messages area */}
+            <div className="flex-1 overflow-y-auto pr-2 mb-4">
+                <div className="flex flex-col space-y-4">
+                    {messages.map((msg) => (
+                        <div
+                            key={msg.id}
+                            className={`flex ${msg.userSent ? "justify-end" : "justify-start"}`}
+                        >
+                            <div
+                                className={`max-w-[85%] rounded-2xl px-4 py-3 text-sm leading-relaxed ${
+                                    msg.userSent
+                                        ? "bg-primary text-primary-foreground rounded-br-sm"
+                                        : "bg-muted text-foreground rounded-bl-sm"
+                                }`}
+                            >
+                                <p className="whitespace-pre-line">{msg.message}</p>
+                            </div>
+                        </div>
+                    ))}
+                </div>
+            </div>
+
+            {/* Input area */}
+            <SendMessage receiveMessage={receiveUserMessage} loading={loading} />
+        </section>
+    );
 }
