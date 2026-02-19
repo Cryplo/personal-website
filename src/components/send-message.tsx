@@ -45,7 +45,7 @@ const SendMessage: React.FC<SendMessageProps> = ({ receiveMessage, loading = fal
           className={cn(
             "mr-4 flex size-11 items-center justify-center rounded-xl transition-colors",
             message.trim() && !loading
-              ? "bg-primary text-primary-foreground hover:bg-primary/90"
+              ? "bg-[hsl(220,70%,45%)] text-white hover:bg-[hsl(220,70%,40%)]"
               : "text-muted-foreground"
           )}
           onClick={handleSendMessage}

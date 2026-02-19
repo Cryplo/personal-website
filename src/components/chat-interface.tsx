@@ -77,7 +77,7 @@ export default function ChatInterface(){
 
     // Conversation state - messages with floating input at bottom
     return (
-        <section className="relative mx-auto flex flex-1 w-full max-w-3xl flex-col px-4">
+        <section className="relative mx-auto flex flex-1 w-full max-w-3xl flex-col px-4 mb-12">
             {/* Messages area - scrollable */}
             <div className="flex-1 overflow-y-auto pr-2 py-6">
                 <div className="flex flex-col space-y-4">
@@ -87,9 +87,9 @@ export default function ChatInterface(){
                             className={`flex ${msg.userSent ? "justify-end" : "justify-start"}`}
                         >
                             <div
-                                className={`max-w-[85%] rounded-2xl px-4 py-3 text-base leading-relaxed ${
+                                className={`max-w-[85%] rounded-2xl px-5 py-4 text-lg leading-relaxed ${
                                     msg.userSent
-                                        ? "bg-primary text-primary-foreground rounded-br-sm"
+                                        ? "bg-[hsl(220,70%,45%)] text-white rounded-br-sm"
                                         : "bg-muted text-foreground rounded-bl-sm"
                                 }`}
                             >
@@ -101,7 +101,7 @@ export default function ChatInterface(){
             </div>
 
             {/* Floating input area */}
-            <div className="sticky bottom-0 pb-6 pt-4 bg-gradient-to-t from-background via-background to-transparent">
+            <div className="sticky bottom-0 pt-4 bg-gradient-to-t from-background via-background to-transparent">
                 <SendMessage receiveMessage={receiveUserMessage} loading={loading} />
             </div>
         </section>
