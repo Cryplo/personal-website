@@ -7,11 +7,18 @@ import { PanelLeftIcon } from "lucide-react";
 import { cn } from "@/lib/utils";
 
 function LayoutContent({ children }: { children: ReactNode }) {
-  const { isOpen, toggle } = useSidebar();
+  const { isOpen, isMobile, toggle, setIsOpen } = useSidebar();
 
   return (
     <>
       <Navbar />
+      {/* Mobile overlay */}
+      {isMobile && isOpen && (
+        <div
+          className="fixed inset-0 z-20 bg-black/50 backdrop-blur-sm"
+          onClick={() => setIsOpen(false)}
+        />
+      )}
       {/* Toggle button - positioned at upper right of sidebar */}
       <button
         onClick={toggle}
@@ -26,7 +33,7 @@ function LayoutContent({ children }: { children: ReactNode }) {
       <main
         className={cn(
           "flex min-h-screen flex-col transition-[margin] duration-300",
-          isOpen ? "ml-64" : "ml-0"
+          isOpen && !isMobile ? "ml-56" : "ml-0"
         )}
       >
         {children}

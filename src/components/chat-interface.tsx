@@ -4,6 +4,8 @@ import { useRef, useState } from "react";
 import { streamChat, ChatMessage } from "@/lib/chat";
 import SendMessage from "./send-message";
 import BlurFade from "@/components/magicui/blur-fade";
+import { useSidebar } from "./sidebar-provider";
+import { cn } from "@/lib/utils";
 
 interface Message {
     id: number,
@@ -17,6 +19,7 @@ export default function ChatInterface(){
     const nextMessageId = useRef(1);
     const [messages, setMessages] = useState<Message[]>([]);
     const [loading, setLoading] = useState(false);
+    const { isOpen, isMobile } = useSidebar();
 
     const appendMessage = (entry: Omit<Message, "id">) => {
         const messageWithId: Message = {
@@ -103,7 +106,7 @@ export default function ChatInterface(){
 
     // Conversation state - messages with floating input at bottom
     return (
-        <section className="relative mx-auto flex flex-1 w-full max-w-3xl flex-col px-4 mb-12">
+        <section className="relative mx-auto flex flex-1 w-full max-w-3xl flex-col px-4 pb-28">
             {/* Messages area - scrollable */}
             <div className="flex-1 overflow-y-auto pr-2 py-6">
                 <div className="flex flex-col space-y-4">
@@ -126,9 +129,14 @@ export default function ChatInterface(){
                 </div>
             </div>
 
-            {/* Floating input area */}
-            <div className="sticky bottom-0 pt-4 bg-gradient-to-t from-background via-background to-transparent">
-                <SendMessage receiveMessage={receiveUserMessage} loading={loading} />
+            {/* Fixed input area */}
+            <div className={cn(
+                "fixed bottom-0 right-0 px-4 pb-8 pt-2 bg-gradient-to-t from-background via-background to-transparent transition-[left] duration-300",
+                isOpen && !isMobile ? "left-56" : "left-0"
+            )}>
+                <div className="mx-auto max-w-3xl">
+                    <SendMessage receiveMessage={receiveUserMessage} loading={loading} />
+                </div>
             </div>
         </section>
     );

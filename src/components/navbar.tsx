@@ -15,7 +15,13 @@ import { useSidebar } from "./sidebar-provider";
 
 export default function Navbar() {
   const pathname = usePathname();
-  const { isOpen } = useSidebar();
+  const { isOpen, isMobile, setIsOpen } = useSidebar();
+
+  const handleNavClick = () => {
+    if (isMobile) {
+      setIsOpen(false);
+    }
+  };
 
   return (
     <aside
@@ -40,6 +46,7 @@ export default function Navbar() {
               <TooltipTrigger asChild>
                 <Link
                   href={item.href}
+                  onClick={handleNavClick}
                   className={cn(
                     "flex items-center gap-3 rounded-lg px-3 py-3 text-base font-medium transition-colors",
                     isActive
