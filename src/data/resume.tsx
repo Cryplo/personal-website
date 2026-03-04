@@ -213,7 +213,7 @@ PHYSICS 240: General Physics II`
       active: true,
       scale: true,
       description:
-        "Cursor for block coding education. Actively in development.",
+        "Cursor for block coding education. AI assistant that tutors students through explaining code, developing step-by-step tutoris, and even making small edits itself.",
       technologies: [
         "NextJS",
         "React",
