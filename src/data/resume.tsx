@@ -95,7 +95,7 @@ In my spare time, I love to work on side-projects, hit the gym, run with friends
       location: "Ann Arbor, Michigan",
       title: "Software Developer",
       logoUrl: "/v1.jpeg",
-      start: "January 2025",
+      start: "January 2026",
       end: "Present",
       description:
         "W26 Product Studio Cohort",
