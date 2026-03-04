@@ -28,7 +28,7 @@ const SendMessage: React.FC<SendMessageProps> = ({ receiveMessage, loading = fal
 
   return (
     <div className="relative flex items-center w-full">
-      <div className="relative flex w-full items-center rounded-3xl border border-border/70 bg-[hsl(0,0%,20%)] transition-all duration-200 focus-within:border-primary/60">
+      <div className="relative flex w-full items-center rounded-3xl bg-[hsl(0,0%,20%)]">
         <input
           readOnly={loading}
           type="text"
