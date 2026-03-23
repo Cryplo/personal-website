@@ -1,4 +1,7 @@
 import { NextResponse } from 'next/server';
+import { streamAzureAIChat, type AzureAIChatMessage } from '@/lib/azure-ai';
+
+export const runtime = 'nodejs';
 
 export async function POST(request: Request) {
     const systemPrompt = `
@@ -120,86 +123,42 @@ Tools: Docker, Kubernetes, LangChain, SQL
       );
     }
 
-    // Call OpenRouter API with streaming
-    const response = await fetch(
-      'https://openrouter.ai/api/v1/chat/completions',
-      {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json',
-          'Authorization': `Bearer ${process.env.OPENROUTER_API_KEY || ''}`
-        },
-        body: JSON.stringify({
-          model: 'stepfun/step-3.5-flash:free',
-          stream: true,
-          messages: [
-            { role: 'system', content: systemPrompt },
-            ...messages
-          ]
-        })
-      }
-    );
-
-    if (!response.ok) {
-      throw new Error('OpenRouter API request failed');
+    const validMessages = messages.filter(isValidChatMessage);
+    if (validMessages.length !== messages.length) {
+      return NextResponse.json(
+        { error: 'Invalid message shape' },
+        { status: 400 }
+      );
     }
 
-    // Stream the response back to client
-    const encoder = new TextEncoder();
-    const decoder = new TextDecoder();
-
-    const stream = new ReadableStream({
-      async start(controller) {
-        const reader = response.body?.getReader();
-        if (!reader) {
-          controller.close();
-          return;
-        }
-
-        try {
-          while (true) {
-            const { done, value } = await reader.read();
-            if (done) break;
-
-            const chunk = decoder.decode(value, { stream: true });
-            const lines = chunk.split('\n');
-
-            for (const line of lines) {
-              if (line.startsWith('data: ')) {
-                const data = line.slice(6);
-                if (data === '[DONE]') continue;
-
-                try {
-                  const parsed = JSON.parse(data);
-                  const content = parsed.choices?.[0]?.delta?.content;
-                  if (content) {
-                    controller.enqueue(encoder.encode(content));
-                  }
-                } catch {
-                  // Skip invalid JSON
-                }
-              }
-            }
-          }
-        } finally {
-          reader.releaseLock();
-          controller.close();
-        }
-      }
-    });
+    const stream = await streamAzureAIChat(validMessages, systemPrompt);
 
     return new Response(stream, {
       headers: {
-        'Content-Type': 'text/plain; charset=utf-8',
-        'Transfer-Encoding': 'chunked',
+        'Content-Type': 'text/event-stream; charset=utf-8',
+        'Cache-Control': 'no-cache, no-transform',
+        'Connection': 'keep-alive',
+        'X-Accel-Buffering': 'no',
       },
     });
 
   } catch (error) {
-    console.error('OpenRouter API error:', error);
+    console.error('Azure OpenAI API error:', error);
     return NextResponse.json(
       { error: 'Failed to process request' },
       { status: 500 }
     );
   }
+}
+
+function isValidChatMessage(message: unknown): message is AzureAIChatMessage {
+  if (!message || typeof message !== 'object') {
+    return false;
+  }
+
+  const candidate = message as Partial<AzureAIChatMessage>;
+  return (
+    (candidate.role === 'user' || candidate.role === 'assistant') &&
+    typeof candidate.content === 'string'
+  );
 }

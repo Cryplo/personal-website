@@ -1,6 +1,6 @@
 "use client";
 
-import { useRef, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import { streamChat, ChatMessage } from "@/lib/chat";
 import SendMessage from "./send-message";
 import BlurFade from "@/components/magicui/blur-fade";
@@ -17,9 +17,14 @@ const BLUR_FADE_DELAY = 0.04;
 
 export default function ChatInterface(){
     const nextMessageId = useRef(1);
+    const messagesEndRef = useRef<HTMLDivElement | null>(null);
     const [messages, setMessages] = useState<Message[]>([]);
     const [loading, setLoading] = useState(false);
     const { isOpen, isMobile } = useSidebar();
+
+    useEffect(() => {
+        messagesEndRef.current?.scrollIntoView({ behavior: "smooth", block: "end" });
+    }, [messages]);
 
     const appendMessage = (entry: Omit<Message, "id">) => {
         const messageWithId: Message = {
@@ -59,12 +64,37 @@ export default function ChatInterface(){
         // Create empty bot message to stream into
         const botMessageId = appendMessage({ userSent: false, message: "" });
         let accumulatedText = "";
+        let pendingText = "";
+        let animationFrameId: number | null = null;
+
+        const flushPendingText = () => {
+            animationFrameId = null;
+            if (!pendingText) {
+                return;
+            }
+
+            updateMessage(botMessageId, pendingText);
+        };
+
+        const queueUpdate = (nextText: string) => {
+            pendingText = nextText;
+            if (animationFrameId !== null) {
+                return;
+            }
+
+            animationFrameId = window.requestAnimationFrame(flushPendingText);
+        };
 
         try {
             await streamChat(chatHistory, (chunk) => {
                 accumulatedText += chunk;
-                updateMessage(botMessageId, accumulatedText);
+                queueUpdate(accumulatedText);
             });
+
+            if (animationFrameId !== null) {
+                window.cancelAnimationFrame(animationFrameId);
+                flushPendingText();
+            }
 
             // Trim final message
             if (accumulatedText.trim()) {
@@ -75,6 +105,10 @@ export default function ChatInterface(){
         } catch (error) {
             console.error("[ChatInterface] Failed to fetch bot reply:", error);
             updateMessage(botMessageId, "I ran into a hiccup responding. Mind trying again?");
+        } finally {
+            if (animationFrameId !== null) {
+                window.cancelAnimationFrame(animationFrameId);
+            }
         }
         setLoading(false);
     };
@@ -126,6 +160,7 @@ export default function ChatInterface(){
                             </div>
                         </div>
                     ))}
+                    <div ref={messagesEndRef} />
                 </div>
             </div>
 

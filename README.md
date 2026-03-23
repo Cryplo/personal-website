@@ -40,7 +40,15 @@ Built with next.js, [shadcn/ui](https://ui.shadcn.com/), and [magic ui](https://
    pnpm dev
    ```
 
-5. Open the [Config file](./src/data/resume.tsx) and make changes
+5. Set Azure OpenAI environment variables:
+
+   ```bash
+   AZURE_OPENAI_ENDPOINT=https://YOUR-RESOURCE-NAME.openai.azure.com
+   AZURE_OPENAI_API_KEY=your_azure_openai_api_key
+   AZURE_OPENAI_DEPLOYMENT=gpt-4o
+   ```
+
+6. Open the [Config file](./src/data/resume.tsx) and make changes
 
 # License
 
