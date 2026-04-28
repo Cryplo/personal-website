@@ -6,13 +6,10 @@ import { ResumeCard } from "@/components/resume-card";
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
 import { DATA } from "@/data/resume";
 import Markdown from "react-markdown";
-import { useState } from "react";
 
 const BLUR_FADE_DELAY = 0.04;
 
 export default function AboutPage() {
-  const [isHovered, setIsHovered] = useState(false);
-
   return (
     <main className="flex flex-col min-h-[100dvh] space-y-10 px-6 sm:px-12 pt-16 sm:pt-24 pb-12 max-w-4xl mx-auto">
       <section id="hero">
@@ -32,28 +29,14 @@ export default function AboutPage() {
               />
             </div>
             <BlurFade delay={BLUR_FADE_DELAY}>
-              <div
-                className="relative overflow-hidden size-40 rounded-full border"
-                onMouseEnter={() => setIsHovered(true)}
-                onMouseLeave={() => setIsHovered(false)}
-              >
-                <Avatar
-                  className={`size-40 absolute inset-0 transition-transform duration-500 ease-in-out ${
-                    isHovered ? "translate-x-full" : "translate-x-0"
-                  }`}
-                >
-                  <AvatarImage alt={DATA.name} src={DATA.avatarUrl} />
-                  <AvatarFallback>{DATA.initials}</AvatarFallback>
-                </Avatar>
-                <Avatar
-                  className={`size-40 absolute inset-0 transition-transform duration-500 ease-in-out ${
-                    isHovered ? "translate-x-0" : "-translate-x-full"
-                  }`}
-                >
-                  <AvatarImage alt={DATA.name} src="/me_alt.png" />
-                  <AvatarFallback>{DATA.initials}</AvatarFallback>
-                </Avatar>
-              </div>
+              <Avatar className="size-40 border">
+                <AvatarImage
+                  alt={DATA.name}
+                  className="object-cover object-center"
+                  src={DATA.avatarUrl}
+                />
+                <AvatarFallback>{DATA.initials}</AvatarFallback>
+              </Avatar>
             </BlurFade>
           </div>
         </div>
