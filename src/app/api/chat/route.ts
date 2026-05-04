@@ -1,5 +1,5 @@
 import { NextResponse } from 'next/server';
-import { streamAzureAIChat, type AzureAIChatMessage } from '@/lib/azure-ai';
+import { streamBedrockAIChat, type BedrockAIChatMessage } from '@/lib/bedrock-ai';
 
 export const runtime = 'nodejs';
 
@@ -131,7 +131,7 @@ Tools: Docker, Kubernetes, LangChain, SQL
       );
     }
 
-    const stream = await streamAzureAIChat(validMessages, systemPrompt);
+    const stream = await streamBedrockAIChat(validMessages, systemPrompt);
 
     return new Response(stream, {
       headers: {
@@ -143,7 +143,7 @@ Tools: Docker, Kubernetes, LangChain, SQL
     });
 
   } catch (error) {
-    console.error('Azure OpenAI API error:', error);
+    console.error('Bedrock API error:', error);
     return NextResponse.json(
       { error: 'Failed to process request' },
       { status: 500 }
@@ -151,12 +151,12 @@ Tools: Docker, Kubernetes, LangChain, SQL
   }
 }
 
-function isValidChatMessage(message: unknown): message is AzureAIChatMessage {
+function isValidChatMessage(message: unknown): message is BedrockAIChatMessage {
   if (!message || typeof message !== 'object') {
     return false;
   }
 
-  const candidate = message as Partial<AzureAIChatMessage>;
+  const candidate = message as Partial<BedrockAIChatMessage>;
   return (
     (candidate.role === 'user' || candidate.role === 'assistant') &&
     typeof candidate.content === 'string'

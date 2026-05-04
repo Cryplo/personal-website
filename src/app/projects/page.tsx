@@ -1,42 +1,167 @@
-import { HackathonCard } from "@/components/hackathon-card";
 import BlurFade from "@/components/magicui/blur-fade";
-import BlurFadeText from "@/components/magicui/blur-fade-text";
 import { ProjectCard } from "@/components/project-card";
-import { ResumeCard } from "@/components/resume-card";
-import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
 import { Badge } from "@/components/ui/badge";
+import { Button } from "@/components/ui/button";
 import { DATA } from "@/data/resume";
+import { cn } from "@/lib/utils";
+import { ArrowUpRight } from "lucide-react";
 import Link from "next/link";
 import Markdown from "react-markdown";
 
 const BLUR_FADE_DELAY = 0.04;
 
-export default function Page() {
+const FEATURED_PROJECTS = [
+  {
+    title: "GlitterCode",
+    slug: "glittercode",
+  },
+  {
+    title: "xAI Hackathon: Grok Lens",
+    slug: "xai-hackathon",
+  },
+  {
+    title: "F1 Racing Game",
+    slug: "f1-racing-game",
+  },
+] as const;
+
+function FeaturedProjectCard({
+  project,
+  slug,
+  isReversed,
+}: {
+  project: (typeof DATA.projects)[number];
+  slug: string;
+  isReversed: boolean;
+}) {
   return (
-    <main className="flex flex-col min-h-[100dvh]">
+    <article
+      className={cn(
+        "grid min-h-[420px] overflow-hidden rounded-lg border border-border/70 bg-card/50 shadow-sm md:grid-cols-[minmax(0,1.25fr)_minmax(320px,0.75fr)]",
+        isReversed && "md:grid-cols-[minmax(320px,0.75fr)_minmax(0,1.25fr)]"
+      )}
+    >
+      <div
+        className={cn(
+          "relative min-h-[280px] bg-black md:min-h-[420px]",
+          isReversed && "md:order-2"
+        )}
+      >
+        {project.video ? (
+          <video
+            src={project.video}
+            autoPlay
+            loop
+            muted
+            playsInline
+            className="h-full w-full object-contain object-center"
+          />
+        ) : (
+          <div className="flex h-full items-center justify-center bg-secondary text-sm text-muted-foreground">
+            Preview coming soon
+          </div>
+        )}
+      </div>
+      <div className="flex flex-col justify-center gap-5 p-6 sm:p-8">
+        <div className="space-y-3">
+          <time className="text-sm text-muted-foreground">{project.dates}</time>
+          <h3 className="text-2xl font-semibold tracking-tight sm:text-3xl">
+            {project.title}
+          </h3>
+          <Markdown className="prose prose-sm max-w-none text-muted-foreground dark:prose-invert">
+            {project.description}
+          </Markdown>
+        </div>
+        <div className="flex flex-wrap gap-1.5">
+          {project.technologies.map((tag) => (
+            <Badge className="px-2 py-0.5 text-xs" variant="secondary" key={tag}>
+              {tag}
+            </Badge>
+          ))}
+        </div>
+        <div className="flex flex-wrap gap-2">
+          <Button asChild>
+            <Link href={`/projects/${slug}`}>
+              Case Study
+              <ArrowUpRight className="ml-2 size-4" />
+            </Link>
+          </Button>
+          {project.links.map((link, idx) => (
+            <Button asChild variant="outline" key={idx}>
+              <Link href={link.href} target="_blank">
+                {link.type}
+              </Link>
+            </Button>
+          ))}
+        </div>
+      </div>
+    </article>
+  );
+}
+
+export default function Page() {
+  const featuredProjects = FEATURED_PROJECTS.map(({ title, slug }) => {
+    const project = DATA.projects.find((item) => item.title === title);
+
+    if (!project) {
+      throw new Error(`Missing featured project: ${title}`);
+    }
+
+    return { project, slug };
+  });
+  const featuredTitles = new Set<string>(
+    FEATURED_PROJECTS.map((project) => project.title)
+  );
+  const remainingProjects = DATA.projects.filter(
+    (project) => !featuredTitles.has(project.title)
+  );
+
+  return (
+    <main className="flex min-h-[100dvh] flex-col px-4 pb-16 sm:px-6">
       <section id="projects">
-        <div className="space-y-12 w-full">
+        <div className="mx-auto w-full max-w-6xl space-y-12">
           <BlurFade delay={BLUR_FADE_DELAY}>
-            <div className="flex flex-col items-center justify-center space-y-4 text-center">
+            <div className="flex flex-col items-center justify-center space-y-4 pt-4 text-center">
               <div className="space-y-2">
                 <h2 className="text-3xl font-bold tracking-tighter sm:text-5xl">
-                  Check out my latest work
+                  Featured Projects
                 </h2>
-                <p className="text-muted-foreground md:text-xl/relaxed lg:text-base/relaxed xl:text-xl/relaxed">
-                  I&apos;ve worked on many projects. Here are a few of my
-                  favorites.
-                </p>
-                <p className="text-muted-foreground md:text-xl/relaxed lg:text-base/relaxed xl:text-xl/relaxed" style={{marginTop: 0}}>
-                  Click on a project to enlarge.
-                </p>
               </div>
             </div>
           </BlurFade>
-          <div className="grid gap-6 max-w-6xl w-full mx-auto px-4" style={{ gridTemplateColumns: "repeat(auto-fit, minmax(300px, 1fr))" }}>
-            {DATA.projects.map((project, id) => (
+          <div className="space-y-8">
+            {featuredProjects.map(({ project, slug }, id) => (
               <BlurFade
                 key={project.title}
-                delay={BLUR_FADE_DELAY * 2 + Math.floor(id / 2) * BLUR_FADE_DELAY}
+                delay={BLUR_FADE_DELAY * 2 + id * BLUR_FADE_DELAY}
+              >
+                <FeaturedProjectCard
+                  project={project}
+                  slug={slug}
+                  isReversed={id % 2 === 1}
+                />
+              </BlurFade>
+            ))}
+          </div>
+        </div>
+      </section>
+      <section id="more-projects" className="mt-16">
+        <div className="mx-auto w-full max-w-6xl space-y-8">
+          <BlurFade delay={BLUR_FADE_DELAY * 5}>
+            <div className="space-y-2 text-center">
+              <h2 className="text-2xl font-bold tracking-tight sm:text-3xl">
+                More Projects
+              </h2>
+            </div>
+          </BlurFade>
+          <div
+            className="grid w-full gap-6"
+            style={{ gridTemplateColumns: "repeat(auto-fit, minmax(300px, 1fr))" }}
+          >
+            {remainingProjects.map((project, id) => (
+              <BlurFade
+                key={project.title}
+                delay={BLUR_FADE_DELAY * 6 + Math.floor(id / 2) * BLUR_FADE_DELAY}
               >
                 <ProjectCard
                   key={project.title}
@@ -54,60 +179,6 @@ export default function Page() {
           </div>
         </div>
       </section>
-      {/*
-      <section id="hackathons">
-        <div className="space-y-12 w-full py-12">
-          <BlurFade delay={BLUR_FADE_DELAY * 13}>
-            <div className="flex flex-col items-center justify-center space-y-4 text-center">
-              <div className="space-y-2">
-                <div className="inline-block rounded-lg bg-foreground text-background px-3 py-1 text-sm">
-                  Hackathons
-                </div>
-                <h2 className="text-3xl font-bold tracking-tighter sm:text-5xl">
-                  I like building things
-                </h2>
-                <p className="text-muted-foreground md:text-xl/relaxed lg:text-base/relaxed xl:text-xl/relaxed">
-                  During my time in university, I attended{" "}
-                  hackathons. People from around the
-                  country would come together and build incredible things in 2-3
-                  days. It was eye-opening to see the endless possibilities
-                  brought to life by a group of motivated and passionate
-                  individuals.
-                </p>
-              </div>
-            </div>
-          </BlurFade>
-          
-        </div>
-      </section>
-      */}
-      {/*
-      <section id="contact">
-        <div className="grid items-center justify-center gap-4 px-4 text-center md:px-6 w-full py-12">
-          <BlurFade delay={BLUR_FADE_DELAY * 16}>
-            <div className="space-y-3">
-              <div className="inline-block rounded-lg bg-foreground text-background px-3 py-1 text-sm">
-                Contact
-              </div>
-              <h2 className="text-3xl font-bold tracking-tighter sm:text-5xl">
-                Get in Touch
-              </h2>
-              <p className="mx-auto max-w-[600px] text-muted-foreground md:text-xl/relaxed lg:text-base/relaxed xl:text-xl/relaxed">
-                Want to chat? Just shoot me a dm{" "}
-                <Link
-                  href={DATA.contact.social.X.url}
-                  className="text-blue-500 hover:underline"
-                >
-                  with a direct question on twitter
-                </Link>{" "}
-                and I&apos;ll respond whenever I can. I will ignore all
-                soliciting.
-              </p>
-            </div>
-          </BlurFade>
-        </div>
-      </section>*/}
-    
     </main>
   );
 }
