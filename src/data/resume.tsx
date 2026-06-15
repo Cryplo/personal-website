@@ -8,7 +8,7 @@ export const DATA = {
   location: "Ann Arbor, MI",
   locationLink: "https://www.google.com/maps/place/annarbor",
   description:
-    `Computer Science and Engineering Physics
+    `Computer Science
 University of Michigan`,
   summary:
       `I'm Dylan, a student at the University of Michigan. Go Blue!
@@ -89,6 +89,18 @@ In my spare time, I love to work on side-projects, hit the gym, run with friends
 
   work: [
     {
+      company: "Amazon Web Services",
+      href: "https://aws.amazon.com/",
+      badges: [],
+      location: "Boston, Massachusetts",
+      title: "SDE Intern",
+      logoUrl: "/aws.png",
+      start: "June 2026",
+      end: "Present",
+      description:
+        "Parallel Computing Service",
+    },
+    {
       company: "V1 Michigan",
       href: "https://v1michigan.com",
       badges: [],
@@ -110,45 +122,20 @@ In my spare time, I love to work on side-projects, hit the gym, run with friends
       start: "May 2025",
       end: "Present",
       description:
-`Researching Vim-style keybinds and action macros in the Hazel editor.`,
+`Researching Vim-style keybinds and action macros in the Hazel editor`,
     },
     {
-      company: "Menlo Innovations",
-      href: "https://google.com",
+      company: "PiHi Samurai Team 1076",
+      href: "https://pihisamurai.org/",
       badges: [],
       location: "Ann Arbor, Michigan",
-      title: "Student Software Consultant",
-      logoUrl: "/menlo_innovations_logo.jpeg",
-      start: "September 2025",
-      end: "December 2025",
+      title: "Engineering Captain",
+      logoUrl: "/pihi.png",
+      start: "Sep 2021",
+      end: "May 2025",
       description:
-        "Developed internal payroll system. Associated with Innovation for Impact club.",
+`Led all engineering subteams through full robot development cycles`,
     },
-    {
-      company: "CLAWS",
-      href: "https://claws.engin.umich.edu",
-      badges: [],
-      location: "Ann Arbor, Michigan",
-      title: "Augmented Reality Software Engineer",
-      logoUrl: "/claws.jpeg",
-      start: "September 2025",
-      end: "December 2025",
-      description:
-        "Developing AR interfaces in Unity for the NASA Suit's challenge.",
-    }, 
-    {
-      company: "The Future Innovators Academy",
-      badges: [],
-      href: "http://thefutureinnovatorsacademy.com",
-      location: "Ann Arbor, Michigan",
-      title: "Summer Camp Instructor",
-      logoUrl: "/fia.png",
-      start: "July 2025",
-      end: "August 2025",
-      description:
-        "Instructed children ages 5–13 in programming, Arduino, electronics, CAD, and graphic design.",
-    },
-    
   ],
   education: [
     {
@@ -156,24 +143,28 @@ In my spare time, I love to work on side-projects, hit the gym, run with friends
       href: "https://umich.edu",
       badges: [],
       location: "Ann Arbor, Michigan",
-      degree: "B.S.E. Computer Science and Engineering Physics",
+      degree: "B.S.E. Computer Science",
       logoUrl: "/michigan2.png",
       start: "August 2025",
       end: "Present",
-      gpa:"4.0",
+      gpa:"3.9",
       description:
       `Current:
-EECS 281: Data Structures and Algorithms
-EECS 370: Introduction to Computer Organization
-PHYSICS 390: Modern Physics
-PHYSICS 391: Modern Physics Lab
-URP 357: Architecture, Sustainability and the City
+EECS 491: Distributed Systems
+MATH 217: Proof-Based Linear Algebra
+EECS 388: Computer Security
+MO 302: Positive Leadership
 
 Completed:
+EECS 281: Data Structures and Algorithms
+EECS 370: Computer Organization
 EECS 280: Programming and Intro Data Structures
 EECS 203: Discrete Mathematics
 EECS 201: Computer Science Pragmatics
+PHYSICS 390: Modern Physics
+PHYSICS 391: Modern Physics Lab
 PHYSICS 340: Waves, Heat, and Light
+URP 357: Architecture, Sustainability and the City
 ENGR 100: Robotics Mechanisms`
     },
     {
