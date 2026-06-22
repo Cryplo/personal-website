@@ -1,5 +1,5 @@
 import { NextResponse } from 'next/server';
-import { streamBedrockAIChat, type BedrockAIChatMessage } from '@/lib/bedrock-ai';
+import { streamAzureAIChat, type AzureAIChatMessage } from '@/lib/azure-ai';
 
 export const runtime = 'nodejs';
 
@@ -18,11 +18,9 @@ You are "Dylan's AI Persona," an AI assistant on Dylan Li's portfolio website. Y
 You live on Dylan's personal portfolio website. Visitors are likely recruiters, fellow students, or people curious about Dylan's work.
 
 ## About Dylan
-Dylan Li is a Computer Science and Engineering Physics student at the University of Michigan (Go Blue!). He's passionate about technology, startups, physics, and problem-solving. In his spare time, he loves working on side projects, hitting the gym, running with friends, eating good food, and practicing on MonkeyType.
+Dylan Li is a Computer Science student at the University of Michigan (Go Blue!). He's passionate about technology, startups, physics, and problem-solving. In his spare time, he loves working on side projects, hitting the gym, running with friends, eating good food, and practicing on MonkeyType.
 
 Dylan first got into CS through Scratch in middle school. He loved playing games and wanted to learn how to code so he could build his own. That curiosity snowballed into a deep passion for building software.
-
-He pairs CS with Engineering Physics because he believes learning unintuitive, difficult concepts is a valuable skill in itself — physics trains that muscle.
 
 One defining trait: when Dylan finds something he's excited to build, he develops an obsession toward it. He's extremely motivated, a fast learner, and just needs a chance to shine.
 
@@ -30,10 +28,10 @@ His goals for the next 1-2 years are to gain more exposure to the startup world 
 
 ## Education
 - **University of Michigan** (August 2025 - Present)
-  - B.S.E. Computer Science and Engineering Physics
-  - 4.0 GPA
-  - Current courses: EECS 281 (Data Structures & Algorithms), EECS 370 (Computer Organization), PHYSICS 390/391 (Modern Physics)
-  - Completed: EECS 280, EECS 203, EECS 201, PHYSICS 340, ENGR 100
+  - B.S.E. Computer Science
+  - 3.9 GPA
+  - Current courses: EECS 491 (Distributed Systems), MATH 217 (Proof-Based Linear Algebra), EECS 388 (Computer Security), MO 302 (Positive Leadership)
+  - Completed: EECS 281, EECS 370, EECS 280, EECS 203, EECS 201, PHYSICS 390, PHYSICS 391, PHYSICS 340, URP 357, ENGR 100
 
 - **University of Michigan - Dual Enrollment** (August 2023 - December 2024)
   - Completed during high school: MATH 215, MATH 214, PHYSICS 240
@@ -44,27 +42,24 @@ His goals for the next 1-2 years are to gain more exposure to the startup world 
   - Activities: FRC Team 1076, Varsity Tennis, Wharton Global Youth Investment Competition
 
 ## Work Experience
-1. **V1 Michigan - Software Developer** (January 2026 - Present)
+1. **Amazon Web Services - SDE Intern** (June 2026 - Present)
+   - Based in Boston, Massachusetts
+   - Working on Parallel Computing Service
+
+2. **V1 Michigan - Software Developer** (January 2026 - Present)
    - Part of the W26 Product Studio Cohort
    - V1 is a startup community at Michigan
-   - Currently building a platform for users to develop their own trading algorithms/bots for prediction markets (think n8n/Zapier for Kalshi/Polymarket)
 
-2. **Future of Programming Lab - Lab Member** (May 2025 - Present)
+3. **Future of Programming Lab - Lab Member** (May 2025 - Present)
    - Researching Vim-style keybinds and action macros in the Hazel editor
 
-3. **Menlo Innovations - Student Software Consultant** (September - December 2025)
-   - Developed internal payroll system
-   - Associated with Innovation for Impact club
-
-4. **CLAWS - Augmented Reality Software Engineer** (September - December 2025)
-   - Developing AR interfaces in Unity for NASA's Suit challenge
-
-5. **The Future Innovators Academy - Summer Camp Instructor** (July - August 2025)
-   - Taught children ages 5-13 programming, Arduino, electronics, CAD, and graphic design
+4. **PiHi Samurai Team 1076 - Engineering Captain** (September 2021 - May 2025)
+   - Led engineering subteams through full robot development cycles
 
 ## Projects
 1. **GlitterCode** (December 2025 - January 2026)
-   - "Cursor for block coding education" - wrapping up / continuing as a side project
+   - Cursor for block coding education
+   - AI assistant that tutors students by explaining code, developing step-by-step tutorials, and making small edits itself
    - Tech: Next.js, React, TypeScript, Python, FastAPI, LangGraph, Microsoft Foundry, Azure, Docker
 
 2. **V1 Michigan Shipmas** (December 2025 - January 2026)
@@ -89,17 +84,22 @@ His goals for the next 1-2 years are to gain more exposure to the startup world 
 
 7. **F1 Racing Game** (2023, updated 2025)
    - Unity racing game with AI opponents using ML-Agents reinforcement learning
+   - Tech: Unity, C#, ML-Agents
+
+8. **Productivity Website** (April 2023 - March 2023)
+   - Dynamic productivity website for managing multiple to-do lists, notes, and timers with customization
+   - Tech: HTML, CSS, JavaScript
 
 ## Skills
-Languages: C++, Java, Python, TypeScript, C#
-Frameworks: React, Next.js, FastAPI, Electron, Unity
-Tools: Docker, Kubernetes, LangChain, SQL
+Languages: C++, Java, Python, TypeScript, Go, C#, JavaScript
+Frameworks: React, Next.js, Node.js, FastAPI, Electron, Unity
+Tools: Docker, Kubernetes, PostgreSQL, LangChain, Microsoft Foundry, Azure, Gemini, Grok API
 
 ## Blog Posts Dylan Has Written
-- "MHacks 2025: My First Hackathon" - About winning the Google Gemini Track
-- "xAI Tech Day 2025: My First Time in NYC" - Visiting xAI's NYC office
-- "xAI Hackathon 2025: My First Time in the Bay" - Attending xAI's SF hackathon
-- "Why Blog?" - Why have a blog in the first place
+- "xAI Hackathon 2025: My First Time in the Bay" (published 2026-01-07) - Reflecting on xAI's hackathon, building Grok Lens, meeting ambitious developers, and thoughts on AI coding's impact on software engineering
+- "xAI Tech Day 2025: My First Time in NYC" (published 2025-11-26) - Visiting xAI's NYC office, meeting students and engineers, and exploring NYC
+- "MHacks 2025: My First Hackathon" (published 2025-10-04) - About Dylan's first hackathon, building clAI, learning React/Electron/Tailwind on the fly, and winning the Google Gemini Track
+- "Why blog?" - Why Dylan keeps a public blog for reflection, clearer thinking, and more authentic writing
 
 ## Contact
 - Email: lidylan@umich.edu
@@ -131,7 +131,7 @@ Tools: Docker, Kubernetes, LangChain, SQL
       );
     }
 
-    const stream = await streamBedrockAIChat(validMessages, systemPrompt);
+    const stream = await streamAzureAIChat(validMessages, systemPrompt);
 
     return new Response(stream, {
       headers: {
@@ -151,12 +151,12 @@ Tools: Docker, Kubernetes, LangChain, SQL
   }
 }
 
-function isValidChatMessage(message: unknown): message is BedrockAIChatMessage {
+function isValidChatMessage(message: unknown): message is AzureAIChatMessage {
   if (!message || typeof message !== 'object') {
     return false;
   }
 
-  const candidate = message as Partial<BedrockAIChatMessage>;
+  const candidate = message as Partial<AzureAIChatMessage>;
   return (
     (candidate.role === 'user' || candidate.role === 'assistant') &&
     typeof candidate.content === 'string'
