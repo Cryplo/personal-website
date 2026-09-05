@@ -1,6 +1,7 @@
 import { NextResponse } from 'next/server';
 import { streamAzureAIChat, type AzureAIChatMessage } from '@/lib/azure-ai';
 
+
 export const runtime = 'nodejs';
 
 export async function POST(request: Request) {
