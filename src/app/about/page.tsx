@@ -2,6 +2,7 @@
 
 import BlurFade from "@/components/magicui/blur-fade";
 import BlurFadeText from "@/components/magicui/blur-fade-text";
+import { Badge } from "@/components/ui/badge";
 import { ResumeCard } from "@/components/resume-card";
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
 import { DATA } from "@/data/resume";
@@ -58,11 +59,11 @@ export default function AboutPage() {
           </BlurFade>
           {DATA.education.map((education, id) => (
             <BlurFade
-              key={education.school}
+              key={`${education.school}-${education.degree}`}
               delay={BLUR_FADE_DELAY * 5 + id * 0.05}
             >
               <ResumeCard
-                key={education.school}
+                key={`${education.school}-${education.degree}`}
                 logoUrl={education.logoUrl}
                 altText={education.school}
                 title={education.school}
@@ -76,6 +77,20 @@ export default function AboutPage() {
             </BlurFade>
           ))}
         </div>
+      </section>
+      <section id="skills" className="space-y-4">
+        <h2 className="text-2xl font-bold">Technical Skills</h2>
+        <div className="flex flex-wrap gap-2">
+          {DATA.skills.map((skill) => (
+            <Badge key={skill} variant="secondary" className="px-3 py-1 text-sm">
+              {skill}
+            </Badge>
+          ))}
+        </div>
+      </section>
+      <section id="hackathons" className="space-y-4">
+        <h2 className="text-2xl font-bold">Hackathons</h2>
+        <p className="text-lg text-muted-foreground">{DATA.hackathons.join(" · ")}</p>
       </section>
       <section id="work">
         <div className="flex min-h-0 flex-col gap-y-5">

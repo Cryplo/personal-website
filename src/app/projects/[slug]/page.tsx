@@ -6,38 +6,9 @@ import Link from "next/link";
 import { notFound } from "next/navigation";
 
 const CASE_STUDIES = {
-  glittercode: {
-    title: "GlitterCode",
-    status: "December 2025 - January 2026",
-    sections: [
-      {
-        title: "Context",
-        body: "Coming Soon",
-      },
-      {
-        title: "Design",
-        body: "Coming Soon",
-      },
-      {
-        title: "Development",
-        body: "Coming Soon",
-      },
-      {
-        title: "Completion",
-        body: "Coming Soon",
-      },
-    ],
-  },
-  "xai-hackathon": {
-    title: "xAI Hackathon: Grok Lens",
-    status: "December 2025",
-    placeholder: "To be updated",
-  },
-  "f1-racing-game": {
-    title: "F1 Racing Game",
-    status: "February 2023 - March 2023; August 2025",
-    placeholder: "To be updated",
-  },
+  glittercode: { title: "GlitterCode" },
+  "xai-hackathon": { title: "xAI Hackathon: Grok Lens" },
+  "f1-racing-game": { title: "F1 Racing Game" },
 } as const;
 
 export function generateStaticParams() {
@@ -87,7 +58,7 @@ export default function ProjectCaseStudyPage({
           <h1 className="text-4xl font-bold tracking-tighter sm:text-6xl">
             {caseStudy.title}
           </h1>
-          <p className="text-base text-muted-foreground">{caseStudy.status}</p>
+          <p className="text-base text-muted-foreground">{project?.dates}</p>
         </div>
 
         {project?.video && (
@@ -103,22 +74,29 @@ export default function ProjectCaseStudyPage({
         )}
       </header>
 
-      {"placeholder" in caseStudy ? (
-        <section className="rounded-lg border border-border/70 bg-card/50 p-8">
-          <p className="text-lg text-muted-foreground">{caseStudy.placeholder}</p>
-        </section>
-      ) : (
+      {project && (
         <div className="space-y-10">
-          {caseStudy.sections.map((section) => (
-            <section className="space-y-3" key={section.title}>
-              <h2 className="text-2xl font-semibold tracking-tight">
-                {section.title}
-              </h2>
-              <p className="text-base leading-7 text-muted-foreground">
-                {section.body}
-              </p>
-            </section>
-          ))}
+          <section className="space-y-3">
+            <h2 className="text-2xl font-semibold tracking-tight">Overview</h2>
+            <p className="text-base leading-7 text-muted-foreground">{project.description}</p>
+          </section>
+          <section className="space-y-3">
+            <h2 className="text-2xl font-semibold tracking-tight">Built with</h2>
+            <div className="flex flex-wrap gap-2">
+              {project.technologies.map((technology) => (
+                <Badge key={technology} variant="secondary">{technology}</Badge>
+              ))}
+            </div>
+          </section>
+          {project.links.length > 0 && (
+            <div className="flex flex-wrap gap-2">
+              {project.links.map((link) => (
+                <Button key={link.href} asChild variant="outline">
+                  <Link href={link.href} target="_blank" rel="noopener noreferrer">{link.type}</Link>
+                </Button>
+              ))}
+            </div>
+          )}
         </div>
       )}
     </main>

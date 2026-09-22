@@ -1,5 +1,5 @@
 import { Icons } from "@/components/icons";
-import { HomeIcon, NotebookIcon, FolderIcon, FileIcon, BotIcon, UserIcon } from "lucide-react";
+import { NotebookIcon, FolderIcon, FileIcon, BotIcon, UserIcon } from "lucide-react";
 
 export const DATA = {
   name: "Dylan Li",
@@ -8,27 +8,20 @@ export const DATA = {
   location: "Ann Arbor, MI",
   locationLink: "https://www.google.com/maps/place/annarbor",
   description:
-    `Computer Science
-University of Michigan`,
+    `Computer Science · University of Michigan
+Physics & Math minors · Class of 2028`,
   summary:
-      `I'm Dylan, a student at the University of Michigan. Go Blue!
+      `I'm Dylan, a Computer Science student at the University of Michigan, with minors in Physics and Math and an expected graduation in May 2028. Go Blue!
+I spent summer 2026 at AWS building monitoring infrastructure and customer-facing metrics for Parallel Computing Service. I also build AI tools, developer tools, and projects that help people learn.
 I'm extremely interested in technology, startups, physics, and problem-solving.
 In my spare time, I love to work on side-projects, hit the gym, run with friends, eat food, and MonkeyType.`,
-    //"At the end of 2022, I quit my job as a software engineer to go fulltime into building and scaling my own SaaS businesses. In the past, [I pursued a double degree in computer science and business](/#education), [interned at big tech companies in Silicon Valley](https://www.youtube.com/watch?v=d-LJ2e5qKdE), and [competed in over 21 hackathons for fun](/#hackathons). I also had the pleasure of being a part of the first ever in-person cohort of buildspace called [buildspace sf1](https://buildspace.so/sf1).",
   avatarUrl: "/me.png",
   skills: [
-    "React",
-    "Next.js",
-    "Typescript",
-    "Node.js",
-    "Python",
-    "Go",
-    "Postgres",
-    "Docker",
-    "Kubernetes",
-    "Java",
-    "C++",
+    "Java", "Python", "C", "C++", "C#", "TypeScript", "HTML/CSS",
+    "Go", "Git", "AWS", "Azure", "Vim", "Unix", "LangGraph", "React",
+    "Next.js", "FastAPI", "Docker",
   ],
+  hackathons: ["HackMIT", "MHacks", "xAI Hackathon"],
   navbar: [
     { href: "/", icon: BotIcon, label: "Chat" },
     { href: "/about", icon: UserIcon, label: "About" },
@@ -59,7 +52,7 @@ In my spare time, I love to work on side-projects, hit the gym, run with friends
       },
       Resume: {
         name: "Resume",
-        url: "https://www.lidylan.dev/resume.pdf", //10/8 resume version
+        url: "/resume.pdf",
         icon: FileIcon,
         navbar: true,
       },
@@ -93,24 +86,30 @@ In my spare time, I love to work on side-projects, hit the gym, run with friends
       href: "https://aws.amazon.com/",
       badges: [],
       location: "Boston, Massachusetts",
-      title: "SDE Intern",
+      title: "Software Development Engineering Intern",
       logoUrl: "/aws.png",
       start: "June 2026",
-      end: "Present",
+      end: "August 2026",
       description:
-        "Parallel Computing Service",
+        `Developed monitoring infrastructure for ECS agents running on thousands of cluster management EC2 instances globally, improving observability and simplifying on-call debugging for Parallel Computing Service.
+
+Worked across engineering and product teams to implement customer-facing cluster capacity metrics, giving users visibility into compute node states, billing information, and potential program failures.
+
+Created an AutoSDE rule to proactively catch missing cross-account API permissions in new code review changes.`,
     },
     {
       company: "V1 Michigan",
       href: "https://v1michigan.com",
       badges: [],
       location: "Ann Arbor, Michigan",
-      title: "Software Developer",
+      title: "Product Studio Member and Community Team",
       logoUrl: "/v1.jpeg",
       start: "January 2026",
-      end: "Present",
+      end: "May 2026",
       description:
-        "W26 Product Studio Cohort",
+        `Built Syllog, a full-stack strategy builder for prediction markets using Next.js, React, and Go. Its visual node-based editor composes market, logic, and trading workflows with the ability to deploy to Kalshi.
+
+Developed a Slack agent for information retrieval and made website improvements to streamline internal team operations.`,
     },
     {
       company: "Future of Programming Lab",
@@ -125,7 +124,7 @@ In my spare time, I love to work on side-projects, hit the gym, run with friends
 `Researching Vim-style keybinds and action macros in the Hazel editor`,
     },
     {
-      company: "PiHi Samurai Team 1076",
+      company: "FIRST Robotics Competition Team 1076",
       href: "https://pihisamurai.org/",
       badges: [],
       location: "Ann Arbor, Michigan",
@@ -134,7 +133,11 @@ In my spare time, I love to work on side-projects, hit the gym, run with friends
       start: "Sep 2021",
       end: "May 2025",
       description:
-`Led all engineering subteams through full robot development cycles`,
+`Directed a 70-person team to design, build, and program three robots, managing the engineering process and coordinating work across subteams.
+
+Migrated the software stack from Python to Java, adopted functional programming practices, and improved odometry precision, computer vision reliability, and motion control accuracy.
+
+Advanced the team from the 40th to the 93rd percentile worldwide over three years of leadership.`,
     },
   ],
   education: [
@@ -143,29 +146,22 @@ In my spare time, I love to work on side-projects, hit the gym, run with friends
       href: "https://umich.edu",
       badges: [],
       location: "Ann Arbor, Michigan",
-      degree: "B.S.E. Computer Science",
+      degree: "B.S.E. Computer Science, Minors in Physics and Math",
       logoUrl: "/michigan2.png",
       start: "August 2025",
-      end: "Present",
+      end: "May 2028 (expected)",
       gpa:"3.9",
       description:
-      `Current:
-EECS 491: Distributed Systems
-MATH 217: Proof-Based Linear Algebra
-EECS 388: Computer Security
-MO 302: Positive Leadership
-
-Completed:
-EECS 281: Data Structures and Algorithms
-EECS 370: Computer Organization
-EECS 280: Programming and Intro Data Structures
-EECS 203: Discrete Mathematics
-EECS 201: Computer Science Pragmatics
-PHYSICS 390: Modern Physics
-PHYSICS 391: Modern Physics Lab
-PHYSICS 340: Waves, Heat, and Light
-URP 357: Architecture, Sustainability and the City
-ENGR 100: Robotics Mechanisms`
+      `Coursework:
+Distributed Systems
+GPU Parallel Programming
+Data Structures and Algorithms
+Computer Organization
+Discrete Math
+Modern Physics
+Physics III
+Computer Science Pragmatics
+Proof-Based Linear Algebra`
     },
     {
       school: "University of Michigan",
@@ -198,22 +194,35 @@ PHYSICS 240: General Physics II`
   ],
   projects: [
     {
+      title: "Syllog",
+      href: "",
+      dates: "January 2026 - May 2026",
+      active: true,
+      description:
+        "Built at V1 Michigan: a full-stack strategy builder for prediction markets. A visual node-based editor lets users compose market, logic, and trading workflows, with the ability to deploy to Kalshi.",
+      technologies: ["Next.js", "React", "Go"],
+      links: [],
+      image: "",
+      video: "",
+    },
+    {
       title: "GlitterCode",
       href: "",
       dates: "December 2025 - January 2026",
       active: true,
       scale: true,
       description:
-        "Cursor for block coding education. AI assistant that tutors students through explaining code, developing step-by-step tutoris, and even making small edits itself.",
+        "Built an AI-assisted block coding platform for Microsoft Imagine Cup, validating and iterating features with 8 students and 2 teachers. Four specialized LangGraph agents support learning, with a FastAPI backend connected to a Next.js frontend through WebSockets. Deployed both services as Docker containers on Azure Container Apps, and created a pitch deck, pitch recording, and product demo covering product-market fit and go-to-market strategy.",
       technologies: [
-        "NextJS",
+        "Next.js",
         "React",
         "TypeScript",
         "Python",
         "FastAPI",
         "LangGraph",
         "Microsoft Foundry",
-        "Microsft Azure",
+        "Azure Container Apps",
+        "WebSockets",
         "Docker"
       ],
       links: [
@@ -231,7 +240,7 @@ PHYSICS 240: General Physics II`
       description:
         "Built 12 projects over the course of 12 days for the V1 Michigan Shipmas challenge. Each project is built around the prompt of the day.",
       technologies: [
-        "NextJS",
+        "Next.js",
         "React",
         "TypeScript",
         "Microsoft Foundry",
@@ -254,13 +263,13 @@ PHYSICS 240: General Physics II`
       active: true,
       scale: true,
       description:
-        "AI-powered research and learning partner that turns multiple Grokipedia pages into an intelligent, interactive notebook. Instead of searching across scattered and potentially incorrect notes and web pages, you simply search for your articles on Grokipedia and Grok Lens creates a truth-seeking AI with additional tools inspired by NotebookLM.",
+        "Built as a selected participant in the xAI Hackathon: a NotebookLM-style AI research agent that turns Grokipedia pages into an interactive study notebook. Designed the full-stack architecture with dedicated FastAPI endpoints calling Grok APIs for each study tool and React components for a consistent user experience.",
       technologies: [
-        "NextJS",
+        "Next.js",
         "FastAPI",
         "RAG",
         "Selenium",
-        "Langchain",
+        "LangChain",
         "React",
         "Tailwind",
         "TypeScript",
@@ -284,7 +293,7 @@ PHYSICS 240: General Physics II`
       description:
         "Recruiter dashboard utilizing AI to analyze candidates quickly.",
       technologies: [
-        "NextJS",
+        "Next.js",
         "React",
         "Tailwind",
         "TypeScript",
@@ -334,7 +343,7 @@ PHYSICS 240: General Physics II`
       dates: "May 2025 - June 2025",
       active: true,
       description:
-        'Built a UNIX-style shell in C++ with custom parsing and execution features, replicating essential UNIX commands and operators within a functional shell environment.',
+        'Built a UNIX-style shell in C++ with custom parsing and execution, replicating essential UNIX commands and operators. Explored process management, file descriptors, recursive descent parsing, and lexing to deepen understanding of operating systems and interpreter design.',
       technologies: [
         "C++",
         "Unix",
