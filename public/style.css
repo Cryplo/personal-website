@@ -25,13 +25,13 @@ body {
 main { width: 100%; max-width: 540px; }
 header { display: flex; align-items: center; justify-content: space-between; gap: 24px; }
 h1 { margin: 0; color: var(--ink); font-size: 36px; line-height: 1.3; letter-spacing: -1.25px; font-weight: 650; }
-nav { display: flex; gap: 19px; font-size: 13px; }
+nav { display: flex; align-items: center; gap: 4px; }
+nav a { display: grid; place-items: center; width: 40px; height: 40px; }
+nav svg { width: 19px; height: 19px; }
 a { color: inherit; text-decoration-color: var(--line); text-underline-offset: 4px; text-decoration-thickness: 1px; }
 a:hover { color: var(--ink); text-decoration-color: currentColor; }
 a:focus-visible { outline: 2px solid var(--ink); outline-offset: 5px; border-radius: 1px; }
-nav a, .email { text-decoration: none; }
-nav a:hover, .email:hover { text-decoration: underline; }
-.email { display: inline-block; margin-top: 9px; font-size: 14px; }
+nav a { text-decoration: none; }
 hr { border: 0; border-top: 1px solid var(--line); margin: 23px 0 22px; }
 p { margin: 0 0 17px; }
 p:last-child { margin-bottom: 0; }
@@ -43,7 +43,6 @@ p:last-child { margin-bottom: 0; }
   body { padding: 80px 28px 96px; font-size: 15px; }
   header { align-items: flex-start; flex-direction: column; gap: 13px; }
   h1 { font-size: 34px; }
-  nav { gap: 21px; }
-  .email { margin-top: 12px; }
+  nav { margin-left: -10px; }
   hr { margin: 21px 0; }
 }
