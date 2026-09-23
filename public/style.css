@@ -1,6 +1,6 @@
 /* The whole site: one column, comfortable type, and room to breathe. */
 :root {
-  color-scheme: light dark;
+  color-scheme: light;
   --paper: #fafafa;
   --ink: #252525;
   --body: #565656;
@@ -21,7 +21,14 @@ body {
   line-height: 1.95;
   -webkit-font-smoothing: antialiased;
 }
-main { width: 100%; max-width: 540px; }
+body::before {
+  content: "";
+  position: fixed;
+  inset: 0;
+  background: url("/gray-mist.png") center bottom / cover no-repeat;
+  pointer-events: none;
+}
+main { position: relative; width: 100%; max-width: 540px; }
 header { display: flex; align-items: center; justify-content: space-between; gap: 24px; }
 h1 { margin: 0; color: var(--ink); font-size: 36px; line-height: 1.3; letter-spacing: -1.25px; font-weight: 650; }
 nav { display: flex; align-items: center; gap: 4px; }
@@ -35,9 +42,6 @@ hr { border: 0; border-top: 1px solid var(--line); margin: 23px 0 22px; }
 p { margin: 0 0 17px; }
 p:last-child { margin-bottom: 0; }
 ::selection { background: #dedede; color: #252525; }
-@media (prefers-color-scheme: dark) {
-  :root { --paper: #1c1c1c; --ink: #f1f1f1; --body: #bfbfbf; --line: #3d3d3d; }
-}
 @media (max-width: 480px) {
   body { padding: 80px 28px 96px; font-size: 15px; }
   header { align-items: flex-start; flex-direction: column; gap: 13px; }
