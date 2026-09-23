@@ -28,12 +28,12 @@ body::before {
   background: url("/gray-mist.png") center bottom / cover no-repeat;
   pointer-events: none;
   transform-origin: center bottom;
-  transform: scale(1.14);
+  transform: scale(1);
   animation: mist-arrive 3s cubic-bezier(0.2, 0.65, 0.3, 1) both;
 }
 @keyframes mist-arrive {
-  from { transform: scale(1); }
-  to { transform: scale(1.14); }
+  from { transform: scale(1.4); }
+  to { transform: scale(1); }
 }
 @media (prefers-reduced-motion: reduce) {
   body::before { animation: none; }
