@@ -1,11 +1,10 @@
 /* The whole site: one column, comfortable type, and room to breathe. */
 :root {
   color-scheme: light dark;
-  --paper: #f8f7f4;
-  --ink: #252622;
-  --body: #565851;
-  --line: #d9dbd2;
-  --wash: #eaf0e8;
+  --paper: #fafafa;
+  --ink: #252525;
+  --body: #565656;
+  --line: #d9d9d9;
 }
 * { box-sizing: border-box; }
 html { min-height: 100%; background: var(--paper); }
@@ -15,7 +14,7 @@ body {
   display: grid;
   place-items: center;
   padding: 96px 28px 128px;
-  background: radial-gradient(ellipse at 80% 100%, var(--wash), transparent 65%);
+  background: var(--paper);
   color: var(--body);
   font-family: "Helvetica Neue", Helvetica, sans-serif;
   font-size: 16px;
@@ -35,9 +34,9 @@ nav a { text-decoration: none; }
 hr { border: 0; border-top: 1px solid var(--line); margin: 23px 0 22px; }
 p { margin: 0 0 17px; }
 p:last-child { margin-bottom: 0; }
-::selection { background: #dce5d5; color: #252622; }
+::selection { background: #dedede; color: #252525; }
 @media (prefers-color-scheme: dark) {
-  :root { --paper: #1c201e; --ink: #f1f0e9; --body: #bfc4bc; --line: #3d463d; --wash: #26342b; }
+  :root { --paper: #1c1c1c; --ink: #f1f1f1; --body: #bfbfbf; --line: #3d3d3d; }
 }
 @media (max-width: 480px) {
   body { padding: 80px 28px 96px; font-size: 15px; }
