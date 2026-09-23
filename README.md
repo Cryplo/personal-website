@@ -1,55 +1,21 @@
-<div align="center">
-<img alt="Portfolio" src="https://github.com/dillionverma/portfolio/assets/16860528/57ffca81-3f0a-4425-b31d-094f61725455" width="90%">
-</div>
+# Dylan Li
 
-# Portfolio [![Deploy with Vercel](https://vercel.com/button)](https://vercel.com/new/clone?repository-url=https%3A%2F%2Fgithub.com%2Fdillionverma%2Fportfolio)
+A personal website made with plain HTML and CSS. No dependencies, build step, or environment variables.
 
-Built with next.js, [shadcn/ui](https://ui.shadcn.com/), and [magic ui](https://magicui.design/), deployed on Vercel.
+## Edit
 
-# Features
+- `public/index.html`: bio and links
+- `public/style.css`: layout and colors (follows your device’s light/dark setting)
+- `public/resume.pdf`: downloadable resume
 
-- Setup only takes a few minutes by editing the [single config file](./src/data/resume.tsx)
-- Built using Next.js 14, React, Typescript, Shadcn/UI, TailwindCSS, Framer Motion, Magic UI
-- Includes a blog
-- Responsive for different devices
-- Optimized for Next.js and Vercel
+## Preview
 
-# Getting Started Locally
+Run `python3 -m http.server 4173 --directory public` and open http://localhost:4173.
 
-1. Clone this repository to your local machine:
+## Deploy
 
-   ```bash
-   git clone https://github.com/dillionverma/portfolio
-   ```
+Vercel serves `public/` directly. `vercel.json` overrides the previous Next.js build configuration. Push `main` to deploy production, or use `vercel deploy` for a preview.
 
-2. Move to the cloned directory
+## Previous website
 
-   ```bash
-   cd portfolio
-   ```
-
-3. Install dependencies:
-
-   ```bash
-   pnpm install
-   ```
-
-4. Start the local Server:
-
-   ```bash
-   pnpm dev
-   ```
-
-5. Set Azure OpenAI environment variables:
-
-   ```bash
-   AZURE_OPENAI_ENDPOINT=https://YOUR-RESOURCE-NAME.openai.azure.com
-   AZURE_OPENAI_API_KEY=your_azure_openai_api_key
-   AZURE_OPENAI_DEPLOYMENT=gpt-4o
-   ```
-
-6. Open the [Config file](./src/data/resume.tsx) and make changes
-
-# License
-
-Licensed under the [MIT license](https://github.com/dillionverma/portfolio/blob/main/LICENSE.md).
+The full Next.js site, including the local blog drafts, is preserved on the local branch `archive/full-site-2026-09-23`. Switch to that branch to restore it. The archive has not been pushed, so unpublished drafts remain local.
