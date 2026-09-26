@@ -25,7 +25,7 @@ body::before {
   content: "";
   position: fixed;
   inset: 0;
-  background: url("/gray-mist.png") center bottom / cover no-repeat;
+  background: url("/celestial-mist.png") center bottom / cover no-repeat;
   pointer-events: none;
 }
 main { position: relative; width: 100%; max-width: 540px; }
