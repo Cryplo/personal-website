@@ -1,7 +1,7 @@
 /* The whole site: one column, comfortable type, and room to breathe. */
 :root {
   color-scheme: light;
-  --paper: #f0f0f1;
+  --paper: #eee7dc;
   --ink: #252525;
   --body: #565656;
   --line: #ababab;
@@ -25,7 +25,8 @@ body::before {
   content: "";
   position: fixed;
   inset: 0;
-  background: url("/cloud-pattern.png") center / cover no-repeat;
+  background: #eee7dc url("/cloud-pattern.png") center / cover no-repeat;
+  background-blend-mode: luminosity;
   pointer-events: none;
 }
 main { position: relative; width: 100%; max-width: 540px; }
