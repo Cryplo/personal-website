@@ -32,7 +32,7 @@ a:hover { color: var(--ink); text-decoration-color: currentColor; }
 a:focus-visible { outline: 2px solid var(--ink); outline-offset: 5px; border-radius: 1px; }
 nav a { text-decoration: none; }
 hr { border: 0; border-top: 1px solid var(--line); margin: 14px 0 13px; }
-p { margin: 0 0 17px; color: #3f3f3f; font-weight: 500; font-size: 15px; text-wrap: pretty; }
+p { margin: 0 0 17px; color: #3f3f3f; font-weight: 600; font-size: 15px; text-wrap: pretty; }
 p:last-child { margin-bottom: 0; }
 p a { color: #476580; text-decoration: none; }
 p a:hover, p a:focus-visible { color: #304c65; text-decoration: underline; text-decoration-color: currentColor; }
@@ -45,12 +45,8 @@ p a:hover, p a:focus-visible { color: #304c65; text-decoration: underline; text-
   hr { margin: 14px 0 13px; }
 }
 
-/* Keep the first two sentences edge-to-edge when the full column fits. */
+/* Use normal word spacing, with each opening sentence on its own desktop line. */
 @media (min-width: 640px) {
-  .bio-line {
-    display: block;
-    text-wrap: nowrap;
-    text-align: justify;
-    text-align-last: justify;
-  }
+  p { font-size: 15.5px; }
+  .bio-line { display: block; text-wrap: wrap; }
 }
