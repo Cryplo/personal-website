@@ -1,6 +1,6 @@
 # Dylan Li
 
-A personal website made with plain HTML and CSS. No dependencies, build step, or environment variables.
+A personal website made with plain HTML and CSS. No build step or environment variables. Satoshi is loaded from Fontshare’s official CDN.
 
 ## Edit
 
