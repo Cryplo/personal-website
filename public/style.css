@@ -44,6 +44,9 @@ p:last-child { margin-bottom: 0; }
 p a { color: #476580; text-decoration: none; }
 p a:hover, p a:focus-visible { color: #304c65; text-decoration: underline; text-decoration-color: currentColor; }
 ::selection { background: #dedede; color: #252525; }
+@media (orientation: portrait) {
+  body::before { background-image: url("/cloud-pattern-mobile.png"); }
+}
 @media (max-width: 480px) {
   body { padding: 80px 28px 96px; font-size: 15px; }
   header { align-items: flex-start; flex-direction: column; gap: 13px; }
