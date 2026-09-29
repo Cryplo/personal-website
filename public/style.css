@@ -44,3 +44,13 @@ p a:hover, p a:focus-visible { color: #304c65; text-decoration: underline; text-
   nav { margin-left: -10px; }
   hr { margin: 14px 0 13px; }
 }
+
+/* Keep the first two sentences edge-to-edge when the full column fits. */
+@media (min-width: 640px) {
+  .bio-line {
+    display: block;
+    text-wrap: nowrap;
+    text-align: justify;
+    text-align-last: justify;
+  }
+}
