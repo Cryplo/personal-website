@@ -6,7 +6,7 @@ A personal website made with plain HTML and CSS. No dependencies, build step, or
 
 - `public/index.html`: bio and links
 - `public/style.css`: layout and colors
-- `public/celestial-mist.png`: generated Chinese celestial landscape background
+- `public/cloud-pattern.png`: generated gray Chinese cloud-pattern background
 - `public/resume.pdf`: downloadable resume
 
 ## Preview
