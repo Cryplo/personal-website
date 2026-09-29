@@ -1,7 +1,7 @@
 /* The whole site: one column, comfortable type, and room to breathe. */
 :root {
   color-scheme: light;
-  --paper: #fafafa;
+  --paper: #f0f0f1;
   --ink: #252525;
   --body: #565656;
   --line: #ababab;
@@ -21,6 +21,7 @@ body {
   line-height: 1.95;
   -webkit-font-smoothing: antialiased;
 }
+/* Image background preserved for later use.
 body::before {
   content: "";
   position: fixed;
@@ -28,6 +29,7 @@ body::before {
   background: url("/celestial-mist.png") center bottom / cover no-repeat;
   pointer-events: none;
 }
+*/
 main { position: relative; width: 100%; max-width: 540px; }
 header { display: flex; align-items: center; justify-content: space-between; gap: 24px; }
 h1 { margin: 0; color: var(--ink); font-size: 36px; line-height: 1.3; letter-spacing: -1.25px; font-weight: 650; }
