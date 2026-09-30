@@ -34,8 +34,8 @@ nav a { text-decoration: none; }
 hr { border: 0; border-top: 1px solid var(--line); margin: 16px 0 15px; }
 p { margin: 0 0 17px; color: #3f3f3f; font-weight: 600; font-size: 17px; text-wrap: pretty; }
 p:last-child { margin-bottom: 0; }
-p a { color: #476580; text-decoration: none; }
-p a:hover, p a:focus-visible { color: #304c65; text-decoration: underline; text-decoration-color: currentColor; }
+p a { color: #3b5872; text-decoration: none; }
+p a:hover, p a:focus-visible { color: #3b5872; text-decoration: underline; text-decoration-color: currentColor; }
 ::selection { background: #dedede; color: #252525; }
 @media (max-width: 600px) {
   body { padding: 80px 28px 96px; font-size: 15px; }
