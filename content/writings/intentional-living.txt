@@ -1,0 +1,14 @@
+Title: Intentional Living
+Date: 2026-10-09
+
+I have noticed in the startup world that there is a lot of thought that goes into how people want to live their lives. Most apparently, I've noticed that choosing where to work or what to work on is usually extremely thought out, at least among those I look up to. I believe that those interested in startups are a part of a group who explicitly deviate away from the comfortable corporate life, filtering for those with a strong conviction in their work. As I personally start searching for
+internships, I've already had to make decisions on what I want from a career, even though I myself do not even know.
+
+Last summer, I had the privilege of choosing between an AWS internship and an AgentMail internship. If you had asked me at the beginning of the year that I'd have just either offer, I would have been extremely happy. But now, I had both and a hard decision to make. AgentMail was (and is) a fast growing startup. Highly impactful work and undoubtable growth. AWS was the flashy name. FAANG freshman summer is statistically rare (if you look at the total number of Michigan CS freshmen), and I grew up
+watching day-in-the-life big tech videos. The prestige paired with the feeling of fulfilling a dream (not anymore) I've had since middle school ended up winning.
+
+To be truthful, deep down I knew that I was always going to choose AWS. Growing up in a fairly competitive environment had subconsciously wired in a tendency to prestige chase. I felt that I was a reflection of my summer internship, and the better the name the more confident I felt in my own abilities. In otherwise, I tied my self worth to my resume. Of course, chasing prestige does have real-world benefits. That's why prestige does matter in the first place. However, this is more of a reflection
+on how I felt about these two options. I didn't choose AWS because I calculated objectively that the prestige outweighs the experience. I chose it because it felt like there was no way I could turn down such a fancy name for a startup most people haven't heard of (yet).
+
+This essay is titled intentional living, meaning to make actions based on your core values rather than live on autopilot. My primary reasons for choosing AWS were all external influences, such as a perceived difference in prestige. These external influences have become so engrained in my own perspective that I lost the ability to approach decisions aligned with my own values. Or, perhaps my core values have adapted to value prestige and chasing high signal. Regardless, I believe that developing a
+better understand of what I truly internally value, and the confidence in myself, will be extremely important during my time in college.

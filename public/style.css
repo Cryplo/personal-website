@@ -34,8 +34,8 @@ nav a { text-decoration: none; }
 hr { border: 0; border-top: 1px solid var(--line); margin: 16px 0 15px; }
 p { margin: 0 0 17px; color: #000000; font-weight: 600; font-size: 17px; text-wrap: pretty; }
 p:last-child { margin-bottom: 0; }
-p a { color: #3b5872; text-decoration: none; }
-p a:hover, p a:focus-visible { color: #3b5872; text-decoration: underline; text-decoration-color: currentColor; }
+p a, .text-link { color: #3b5872; text-decoration: none; }
+p a:hover, p a:focus-visible, .text-link:hover, .text-link:focus-visible { color: #3b5872; text-decoration: underline; text-decoration-color: currentColor; }
 ::selection { background: #dedede; color: #252525; }
 @media (max-width: 600px) {
   body { padding: 80px 28px 96px; font-size: 15px; }
@@ -50,3 +50,16 @@ p a:hover, p a:focus-visible { color: #3b5872; text-decoration: underline; text-
   p { font-size: 18px; }
   .bio-line { display: block; text-wrap: wrap; }
 }
+
+/* A simple list and plain article pages, sharing the homepage typography. */
+.writing-page { display: block; }
+.writing-page main { margin: 0 auto; }
+.back-link { display: inline-block; margin-bottom: 22px; }
+.post-list { list-style: none; margin: 0; padding: 0; }
+.post-list li { display: flex; align-items: baseline; justify-content: space-between; gap: 16px; }
+.post-list a { font-size: 18px; font-weight: 600; }
+.post-note { font-size: 14px; }
+
+.post-header { flex-direction: row; align-items: baseline; flex-wrap: wrap; gap: 8px 20px; }
+.post-header h1 { min-width: 0; overflow-wrap: anywhere; }
+.post-header time { flex-shrink: 0; margin-left: auto; }
